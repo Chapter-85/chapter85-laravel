@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'my_orders' => 'My Orders',
+    'order_id' => 'Order ID',
+    'delivery_status' => 'Delivery Status',
+    'sales_amount' => 'Sales Amount',
+    'payment_status' => 'Payment Status',
+    'action' => 'Action',
+    'sku' => 'SKU',
+    'order' => 'Order',
+    'total_price' => 'Total Price',
+    'order_status' => 'Order Status',
+    'product_details' => 'Product Details',
+    'quantity' => 'Quantity',
+    'total_amount' => 'Total Amount',
+    'category' => 'Category',
+    'manufacturer' => 'Manufacturer',
+    'payment_invoice' => 'Payment & Invoice Information',
+    'payment_status' => 'Payment Status',
+    'due_date' => 'Due Date',
+    'payment_amount' => 'Payment Amount',
+    'payment_method' => 'Payment Method',
+    'payment_due_date' => 'Payment Due Date',
+    'delivery_information' => 'Delivery Information',
+    'delivery_status' => 'Delivery Status',
+    'delivery_method' => 'Delivery Method',
+    'delivery_address' => 'Delivery Address',
+    'delivery_due_date' => 'Delivery Due Date'
+];

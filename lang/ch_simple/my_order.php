@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'my_orders' => '我的订单',
+    'order_id' => '订单编号',
+    'delivery_status' => '送达状态',
+    'sales_amount' => '销售额',
+    'payment_status' => '支付状态',
+    'action' => '活动',
+    'sku' => '库存单位',
+    'order' => 'Order',
+    'total_price' => '总价',
+    'order_status' => '订单状态',
+    'product_details' => '产品详情',
+    'quantity' => '数量',
+    'total_amount' => '总金额',
+    'category' => 'Category',
+    'manufacturer' => 'Manufacturer',
+    'payment_invoice' => '付款和发票信息',
+    'payment_status' => '支付状态',
+    'due_date' => 'Due Date',
+    'payment_amount' => '支付金额',
+    'payment_method' => '付款方式',
+    'payment_due_date' => '付款截止日期',
+    'delivery_information' => '配送信息',
+    'delivery_status' => '送达状态',
+    'delivery_method' => '运输方式',
+    'delivery_address' => '邮寄地址',
+    'delivery_due_date' => '交货截止日期'
+];
