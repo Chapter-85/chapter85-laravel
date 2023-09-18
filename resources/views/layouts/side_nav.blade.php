@@ -65,13 +65,13 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link menu-link
                     {{ Request::is('manufacturers') || Request::is('manufacturers/*') ? 'active' : '' }}"
                         href="{{ route('manufacturers.index') }}" role="button">
                         <i class="ri-home-smile-line"></i> <span data-key="t-dashboards">Manufacturers</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link menu-link
@@ -104,14 +104,14 @@
                         <i class="ri-home-smile-line"></i> <span data-key="t-dashboards">Customers Products</span>
                     </a>
                 </li> --}}
-
+{{--
                 <li class="nav-item">
                     <a class="nav-link menu-link
                     {{ Request::is('product-commission') || Request::is('product-commission/*') ? 'active' : '' }}"
                         href="{{ route('product-commission.index') }}" role="button">
                         <i class="ri-home-smile-line"></i> <span data-key="t-dashboards">Products Commission</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link menu-link
@@ -121,15 +121,15 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link menu-link
                     {{ Request::is('exchange-rate') || Request::is('exchange-rate/*') ? 'active' : '' }}"
                         href="{{ route('exchange-rate.index') }}" role="button">
                         <i class="ri-home-smile-line"></i> <span data-key="t-dashboards">Exchange Rate</span>
                     </a>
-                </li>
+                </li> --}}
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link menu-link @if (Request::is('setup') ||
                         Request::is('setup/*') ||
                         Request::is('payment-methods/*') ||
@@ -176,8 +176,8 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+                {{-- <li class="nav-item">
                     <a class="nav-link menu-link @if (Request::is('staffs') ||
                         Request::is('staffs/*') ||
                         Request::is('roles-permission-assignment-list') ||
@@ -232,7 +232,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
             </ul>
         </div>
