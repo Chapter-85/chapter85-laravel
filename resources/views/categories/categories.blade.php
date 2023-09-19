@@ -12,7 +12,7 @@
         @endif
         <div class="col-lg-12">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Categories / 類別 </h4>
+                <h4 class="card-title mb-0 flex-grow-1">Categories </h4>
             </div>
             <div class="card">
                 <div class="card-body">

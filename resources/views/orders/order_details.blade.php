@@ -8,7 +8,7 @@
                     <div class="d-flex align-items-center">
                         <h5 class="card-title flex-grow-1 mb-0">Order #{{ $order->id }}</h5>
                         <div class="flex-shrink-0">
-                            <span class="badge bg-success p-2" style="font-size: 15px">Total Price: USD
+                            <span class="badge bg-success p-2" style="font-size: 15px">Total Price: PKR
                                 {{ number_format($total_price, 2) }}</span>
                             <span class="badge bg-info p-2" style="font-size: 15px">Order Status:
                                 {{ $order->order_status }}</span>
@@ -54,25 +54,25 @@
                                             </div>
                                         </td>
                                         {{-- {{ dd($product->toArray()) }} --}}
-                                        <td class="fw-medium text-center">USD {{ number_format($product->spot_price, 2) }}
+                                        <td class="fw-medium text-center">PKR {{ number_format($product->spot_price, 2) }}
                                         </td>
                                         <td class="fw-medium text-center">
                                             @if ($product->markup_type == 'percentage')
                                                 {{ $product->mark_up }} %
                                             @else
-                                                USD {{ number_format($product->mark_up, 2) }}
+                                                PKR {{ number_format($product->mark_up, 2) }}
                                             @endif
 
                                         </td>
                                         {{-- {{ dd($product->toArray()) }} --}}
                                         <td class="fw-medium text-center">
-                                            USD {{ number_format($product->product->getProductCommission(), 2) }}
+                                            PKR {{ number_format($product->product->getProductCommission(), 2) }}
                                         </td>
-                                        <td class="fw-medium text-center">USD
+                                        <td class="fw-medium text-center">PKR
                                             {{ number_format($product->price_with_markup, 2) }}</td>
                                         <td class="fw-medium text-center">{{ $product->quantity }}</td>
                                         <td class="fw-medium text-center">
-                                            USD {{ number_format($product->total_price, 2) }}
+                                            PKR {{ number_format($product->total_price, 2) }}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -162,10 +162,10 @@
                                                 | {{ $commission->commission_got_percentage }} %
                                             @endif
                                         </td>
-                                        <td class="fw-medium text-center">USD
+                                        <td class="fw-medium text-center">PKR
                                             {{ number_format($commission->tier_commission, 2) }}
                                             @if (isset($commission->commission_got))
-                                                | USD {{ number_format($commission->commission_got, 2) }}
+                                                | PKR {{ number_format($commission->commission_got, 2) }}
                                             @endif
                                         </td>
                                     </tr>
@@ -208,7 +208,7 @@
                             <tbody>
 
                                 <tr>
-                                    <td class="fw-medium text-center">USD {{ number_format($total_price, 2) }}</td>
+                                    <td class="fw-medium text-center">PKR {{ number_format($total_price, 2) }}</td>
                                     <td class="fw-medium text-center">{{ $order->payment_method->payment_method }}</td>
                                     <td class="fw-medium text-center">{{ $order->payment_status }}</td>
                                     <td class="fw-medium text-center">

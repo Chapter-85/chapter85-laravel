@@ -211,71 +211,12 @@ class Product extends Model
     public function getProductPrice($type = 'str')
     {
         $product = $this;
-        $final_price = 0;
+        $final_price = $product->fixed_amount;
 
         // return 'N/A';
 
-        if ($product->pricing_type == 'fix_price') {
-            if ($product->surcharge_at_product == 'yes') {
-                if ($product->markup_type == 'flat') {
-                    $final_price = $product->mark_up + $product->fixed_amount;
-                } else {
-                    $final_price = $product->fixed_amount + (($product->fixed_amount / 100) * $product->mark_up);
-                }
-            } else {
-                if ($product->category->surcharge_at_category == 'yes') {
-                    if ($product->category->mark_up == 'flat') {
-                        $final_price = $product->mark_up + $product->fixed_amount;
-                    } else {
-                        $final_price = $product->fixed_amount + (($product->fixed_amount / 100) * $product->category->mark_up);
-                    }
-                } else {
-                    $final_price = $product->fixed_amount;
-                }
-                // $product->category->mark_up;
-                // $final_price = $product->fixed_amount;
-            }
-        } else {
-            try {
-                $gold_price = 0;
-                if (Session::get('gold_price') && Carbon::now()->timestamp < Session::get('gold_price_expires_at')) {
-                    $gold_price = Session::get('gold_price');
-                } else {
-                    // $response = Http::get('http://150.242.218.15:3080/');
-                    // $resp = $response->object();
-                    // $gold_price = $resp->ask;
-                    $gold_price = 1747;
-
-                    Session::put('gold_price', $gold_price);
-                    Session::put('gold_price_expires_at', Carbon::now()->addMinutes(10)->timestamp);
-                }
-
-                $price = ($product->weight * $gold_price);
-                if ($product->surcharge_at_product == 'yes') {
-                    if ($product->markup_type == 'flat') {
-                        $final_price = $product->mark_up + $price;
-                    } else {
-                        $final_price = $price + (($price / 100) * $product->mark_up);
-                    }
-                } else {
-                    if ($product->category->surcharge_at_category == 'yes') {
-                        if ($product->category->mark_up == 'flat') {
-                            $final_price = $product->mark_up + $price;
-                        } else {
-                            $final_price = $price + (($price / 100) * $product->category->mark_up);
-                        }
-                    } else {
-                        $final_price = $price;
-                    }
-                }
-            } catch (\Throwable $th) {
-                //throw $th;
-                return 'N/A';
-            }
-        }
-
         if ($type == 'str') {
-            return  'USD ' . number_format($final_price, 2);
+            return  'PKR ' . number_format($final_price, 2);
         }
 
         return $final_price;
@@ -326,8 +267,8 @@ class Product extends Model
     public function productsQuantity()
     {
         $inventory = Inventory::where('product_id', $this->id)->sum('units');
-        // dd($inventory);
         if ($inventory > 0) {
+            // dd($inventory);
             return $inventory;
         }
         return null;

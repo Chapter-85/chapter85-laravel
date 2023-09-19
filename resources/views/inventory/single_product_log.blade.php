@@ -42,9 +42,9 @@
                                                 <p class="text-muted mb-0">Category: <span
                                                         class="fw-medium">{{ $product->category->name }}</span>
                                                 </p>
-                                                <p class="text-muted mb-0">Manufacturer: <span
+                                                {{-- <p class="text-muted mb-0">Manufacturer: <span
                                                         class="fw-medium">{{ $product->manufacturer->name }}</span>
-                                                </p>
+                                                </p> --}}
                                             </div>
                                         </div>
                                     </td>
@@ -53,7 +53,7 @@
                                     <td>{{ $product->on_hold }} </td>
                                     {{-- <td>{{ $product->mark_up }}</td> --}}
                                     {{-- <td class="fw-medium text-end">
-                                        {{ $product->getProductPrice() }} USD
+                                        {{ $product->getProductPrice() }} PKR
                                     </td> --}}
                                 </tr>
                             </tbody>
@@ -127,7 +127,7 @@
         </div>
         <div class="col-lg-12">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Product Inventory Logs / 產品庫存日誌 / 产品库存日志</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Product Inventory Logs </h4>
             </div>
             <div class="card">
                 <div class="card-body">
@@ -163,7 +163,7 @@
                                         <td><span class="badge bg-warning">Sold</span></td>
                                         <td>{{ $inventories->order->id }}</td>
                                         <td>{{ $inventories->order->customer->full_name }}</td>
-                                        <td>{{ $inventories->order->spot_price }} USD</td>
+                                        <td>{{ $inventories->order->spot_price }} PKR</td>
                                     @else
                                         <td><span class="badge bg-success">Added</span></td>
                                         <td>N /A</td>

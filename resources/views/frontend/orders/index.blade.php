@@ -22,29 +22,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($orders as $order)
+                            {{-- @forelse ($orders as $order)
                                 <tr>
                                     <td>{{ $order->id }}</td>
-                                    {{-- <td>{{ $order->quantity }}</td> --}}
                                     <td>{{ $order->payment_status }}
                                     </td>
                                     <td>{{ $order->delivery_status }}</td>
 
                                     @if ($order->total_price == null)
-                                        <td>USD 0 </td>
+                                        <td>PKR 0 </td>
                                     @else
-                                        <td>USD {{ number_format($order->total_price, 2) }} </td>
+                                        <td>PKR {{ number_format($order->total_price, 2) }} </td>
                                     @endif
                                     <td><a href="{{ route('get-customer-order-details', $order->id) }}"
                                             class="btn btn-sm btn-icon waves-effect waves-light">
                                             Details
                                         </a></td>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="6">{{ __('home_page.no_record_found') }}</td>
-                                </tr>
-                            @endforelse
+                            @empty --}}
+                            <tr>
+                                <td colspan="6">{{ __('home_page.no_record_found') }}</td>
+                            </tr>
+                            {{-- @endforelse --}}
                         </tbody>
                         <tbody>
 

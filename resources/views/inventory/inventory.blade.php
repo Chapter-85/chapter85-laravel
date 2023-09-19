@@ -11,7 +11,7 @@
         {{-- @endif --}}
         <div class="col-lg-12">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Products Inventory List / 產品庫存清單 / 产品库存清单</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Products Inventory List</h4>
                 {{-- <div class="flex-shrink-0">
                     <a href="{{ route('inventories.create') }}" class="btn btn-success btn-label btn-sm">
                         <i class="ri-add-fill label-icon align-middle fs-16 me-2"></i> Add New
@@ -26,12 +26,9 @@
                             <tr>
                                 <th>Sr.#</th>
                                 <th>SKU</th>
-                                {{-- <th>Product ID</th> --}}
                                 <th>Product Name</th>
-                                {{-- <th>Order ID</th> --}}
                                 <th>Available Units</th>
                                 <th>Minimum Quantity</th>
-                                {{-- <th>Created At</th> --}}
                                 <th>Action</th>
                             </tr>
                         </thead>

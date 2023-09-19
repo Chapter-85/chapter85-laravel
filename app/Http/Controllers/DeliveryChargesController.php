@@ -59,9 +59,6 @@ class DeliveryChargesController extends Controller
             'delivery_method' => 'required|string|max:255',
             'category_id' => 'required|integer|max:255',
             'amount' => 'required',
-            'time_duration' => 'required|string|max:255',
-            'grace_period' => 'required|string|max:255',
-            'charge_at_beginning' => 'required'
         ]);
 
         DeliveryCharges::create($request->all());
@@ -108,9 +105,6 @@ class DeliveryChargesController extends Controller
             'delivery_method' => 'required|string|max:255',
             'category_id' => 'required|integer|max:255',
             'amount' => 'required',
-            'time_duration' => 'required|string|max:255',
-            'grace_period' => 'required|string|max:255',
-            'charge_at_beginning' => 'required'
         ]);
 
         $delivery_charge->update($request->all());

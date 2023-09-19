@@ -10,7 +10,7 @@
                     <div class="d-flex align-items-center">
                         <h5 class="card-title flex-grow-1 mb-0">{{ __('my_order.order') }} #{{ $order->id }}</h5>
                         <div class="flex-shrink-0">
-                            <span class=""> {{ __('my_order.total_price') }}: USD
+                            <span class=""> {{ __('my_order.total_price') }}: PKR
                                 {{ number_format($total_price, 2) }} </span>
                             <span class="badge bg-info p-2" style="font-size: 15px">{{ __('my_order.order_status') }}:
                                 {{ $order->order_status }}</span>
@@ -55,11 +55,11 @@
                                             </div>
                                         </td>
                                         {{-- {{ dd($product->toArray()) }} --}}
-                                        <td class="fw-medium text-center">USD
+                                        <td class="fw-medium text-center">PKR
                                             {{ number_format($product->price_with_markup, 2) }}</td>
                                         <td class="fw-medium text-center">{{ $product->quantity }}</td>
                                         <td class="fw-medium text-center">
-                                            USD {{ number_format($product->total_price, 2) }}
+                                            PKR {{ number_format($product->total_price, 2) }}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -100,7 +100,7 @@
                             <tbody>
 
                                 <tr>
-                                    <td class="fw-medium text-center">USD {{ number_format($total_price, 2) }}</td>
+                                    <td class="fw-medium text-center">PKR {{ number_format($total_price, 2) }}</td>
                                     <td class="fw-medium text-center">{{ $order->payment_method->payment_method }}</td>
                                     <td class="fw-medium text-center">{{ $order->payment_status }}</td>
                                     <td class="fw-medium text-center">

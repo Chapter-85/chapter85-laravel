@@ -26,24 +26,10 @@ $(document).ready(function () {
                 name: "category.name",
                 defaultContent: "<span>N / A</span>",
             },
-            {
-                data: "time_duration",
-                name: "time_duration",
-                width: "15%",
-            },
+
             {
                 data: "amount",
                 name: "amount",
-                width: "15%",
-            },
-            {
-                data: "grace_period",
-                name: "grace_period",
-                width: "15%",
-            },
-            {
-                data: "charge_at_beginning",
-                name: "charge_at_beginning",
                 width: "15%",
             },
             {
