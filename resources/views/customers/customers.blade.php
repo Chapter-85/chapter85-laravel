@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Customers/顧客</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Customers</h4>
                 {{-- @permission('add-course') --}}
                 <div class="flex-shrink-0">
                     <a href="{{ route('customers.create') }}" class="btn btn-success btn-label btn-sm">

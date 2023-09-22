@@ -132,11 +132,11 @@
                                 <div class="col-md-12 pt-4 text-end">
                                     <div class="lead mt-0 mb-10">
                                         Order Total:
-                                        <span id="total_price_usd"><strong>USD
+                                        <span id="total_price_usd"><strong>PKR
                                                 {{ number_format($total_price, 2) }}</strong></span>
                                         <span id="total_price_hkd" style="display: none"><strong>HKD
                                                 {{ number_format($total_price * $hkd_price, 2) }}
-                                            </strong> <br><strong>USD {{ number_format($total_price, 2) }}</strong></span>
+                                            </strong> <br><strong>PKR {{ number_format($total_price, 2) }}</strong></span>
                                     </div>
                                     <div>
                                         <div class="mb-10">
@@ -327,7 +327,7 @@
                 let payment_method_id = $('#payment_method_id').val();
                 let delivery_method_id = $('#delivery_method_id').val();
 
-                let currency = 'USD';
+                let currency = 'PKR';
 
                 if (method != 'credit card') {
                     currency = 'HKD';

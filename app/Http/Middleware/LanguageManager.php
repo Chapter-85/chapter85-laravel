@@ -25,17 +25,17 @@ class LanguageManager
         // HK, Taiwan and China IP as Chinese
         // dd($details);
 
-        if (session()->has('locale')) {
+        // if (session()->has('locale')) {
             App::setLocale(session()->get('locale'));
-        } else {
+        // } else {
 
-            $details = GeoLocation::lookup($request->ip());
-            $locations = ['Taiwan', 'Chinese', 'Hong Kong'];
+        //     $details = GeoLocation::lookup($request->ip());
+        //     $locations = ['Taiwan', 'Chinese', 'Hong Kong'];
 
-            if (in_array($details->getCountry(), $locations) || in_array($details->getCity(), $locations) || in_array($details->getRegion(), $locations)) {
-                App::setLocale('ch');
-            }
-        }
+        //     if (in_array($details->getCountry(), $locations) || in_array($details->getCity(), $locations) || in_array($details->getRegion(), $locations)) {
+        //         App::setLocale('ch');
+        //     }
+        // }
 
         return $next($request);
     }

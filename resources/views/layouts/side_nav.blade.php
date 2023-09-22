@@ -65,13 +65,13 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link menu-link
                     {{ Request::is('manufacturers') || Request::is('manufacturers/*') ? 'active' : '' }}"
                         href="{{ route('manufacturers.index') }}" role="button">
                         <i class="ri-home-smile-line"></i> <span data-key="t-dashboards">Manufacturers</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link menu-link
@@ -104,14 +104,14 @@
                         <i class="ri-home-smile-line"></i> <span data-key="t-dashboards">Customers Products</span>
                     </a>
                 </li> --}}
-
+                {{--
                 <li class="nav-item">
                     <a class="nav-link menu-link
                     {{ Request::is('product-commission') || Request::is('product-commission/*') ? 'active' : '' }}"
                         href="{{ route('product-commission.index') }}" role="button">
                         <i class="ri-home-smile-line"></i> <span data-key="t-dashboards">Products Commission</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link menu-link
@@ -121,39 +121,39 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link menu-link
                     {{ Request::is('exchange-rate') || Request::is('exchange-rate/*') ? 'active' : '' }}"
                         href="{{ route('exchange-rate.index') }}" role="button">
                         <i class="ri-home-smile-line"></i> <span data-key="t-dashboards">Exchange Rate</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link menu-link @if (Request::is('setup') ||
-                        Request::is('setup/*') ||
-                        Request::is('payment-methods/*') ||
-                        Request::is('payment-methods') ||
-                        Request::is('nationalities') ||
-                        Request::is('nationalities/*')) active @endif"
-                        href="#sidebarMultilevel" data-bs-toggle="collapse" role="button"
-                        aria-expanded="@if (Request::is('setup') ||
                             Request::is('setup/*') ||
                             Request::is('payment-methods/*') ||
                             Request::is('payment-methods') ||
                             Request::is('nationalities') ||
-                            Request::is('nationalities/*')) true @else false @endif"
+                            Request::is('nationalities/*')) active @endif"
+                        href="#sidebarMultilevel" data-bs-toggle="collapse" role="button"
+                        aria-expanded="@if (Request::is('setup') ||
+                                Request::is('setup/*') ||
+                                Request::is('payment-methods/*') ||
+                                Request::is('payment-methods') ||
+                                Request::is('nationalities') ||
+                                Request::is('nationalities/*')) true @else false @endif"
                         aria-controls="sidebarMultilevel">
                         <i class="ri-settings-2-fill"></i>
                         <span data-key="t-multi-level">Setup</span>
                     </a>
 
                     <div class="collapse menu-dropdown @if (Request::is('setup') ||
-                        Request::is('setup/*') ||
-                        Request::is('payment-methods/*') ||
-                        Request::is('payment-methods') ||
-                        Request::is('nationalities') ||
-                        Request::is('nationalities/*')) show @endif"
+                            Request::is('setup/*') ||
+                            Request::is('payment-methods/*') ||
+                            Request::is('payment-methods') ||
+                            Request::is('nationalities') ||
+                            Request::is('nationalities/*')) show @endif"
                         id="sidebarMultilevel">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
@@ -179,31 +179,31 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link @if (Request::is('staffs') ||
-                        Request::is('staffs/*') ||
-                        Request::is('roles-permission-assignment-list') ||
-                        Request::is('permissions') ||
-                        Request::is('permissions/*') ||
-                        Request::is('roles') ||
-                        Request::is('roles/*')) active @endif"
-                        href="#sidebarRolePermission" data-bs-toggle="collapse" role="button"
-                        aria-expanded="@if (Request::is('staffs') ||
                             Request::is('staffs/*') ||
                             Request::is('roles-permission-assignment-list') ||
                             Request::is('permissions') ||
                             Request::is('permissions/*') ||
                             Request::is('roles') ||
-                            Request::is('roles/*')) true @else false @endif"
+                            Request::is('roles/*')) active @endif"
+                        href="#sidebarRolePermission" data-bs-toggle="collapse" role="button"
+                        aria-expanded="@if (Request::is('staffs') ||
+                                Request::is('staffs/*') ||
+                                Request::is('roles-permission-assignment-list') ||
+                                Request::is('permissions') ||
+                                Request::is('permissions/*') ||
+                                Request::is('roles') ||
+                                Request::is('roles/*')) true @else false @endif"
                         aria-controls="sidebarRolePermission">
                         <i class="ri-dashboard-2-line"></i>
                         <span data-key="t-dashboards">Roles & Permissions</span>
                     </a>
                     <div class="collapse menu-dropdown @if (Request::is('staffs') ||
-                        Request::is('staffs/*') ||
-                        Request::is('roles-permission-assignment-list') ||
-                        Request::is('permissions') ||
-                        Request::is('permissions/*') ||
-                        Request::is('roles') ||
-                        Request::is('roles/*')) show @endif"
+                            Request::is('staffs/*') ||
+                            Request::is('roles-permission-assignment-list') ||
+                            Request::is('permissions') ||
+                            Request::is('permissions/*') ||
+                            Request::is('roles') ||
+                            Request::is('roles/*')) show @endif"
                         id="sidebarRolePermission">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">

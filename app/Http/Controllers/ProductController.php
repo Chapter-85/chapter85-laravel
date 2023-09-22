@@ -29,32 +29,29 @@ class ProductController extends Controller
 
                     $today = Carbon::now()->format('Y-m-d');
 
-                    if($row->status == 'active'){
+                    if ($row->status == 'active') {
 
-                        if($row->valid_from == null || $row->valid_till == null){
+                        if ($row->valid_from == null || $row->valid_till == null) {
                             return '<span class="badge bg-info">Active</span>';
-                        }else{
+                        } else {
 
                             if ($row->valid_from <=  $today && $row->valid_till >= $today) {
                                 return '<span class="badge bg-info">Active</span>';
-                            }else{
+                            } else {
                                 return '<span class="badge bg-danger">Expired</span>';
                             }
                         }
-
-                    }else{
+                    } else {
                         return '<span class="badge bg-danger">In Active</span>';
                     }
-
                 })
                 ->addColumn('validity', function ($row) {
 
-                    if($row->valid_from != null && $row->valid_till != null){
-                        return $row->valid_from->format('d M, Y') .' to '. $row->valid_till->format('d M, Y');
+                    if ($row->valid_from != null && $row->valid_till != null) {
+                        return $row->valid_from->format('d M, Y') . ' to ' . $row->valid_till->format('d M, Y');
                     }
 
                     return 'N/A';
-                    
                 })
                 ->addColumn('action', function ($row) {
                     return view('products.actions', ['row' => $row]);
@@ -92,10 +89,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'product_picture' => 'required|file|mimes:jpg,jpeg,png|max:2048',
             'pricing_type' => 'required|string|max:255',
-            'surcharge_at_product' => 'required',
             'catergory_id' => 'required|integer',
-            'manufacturer_id' => 'required|integer',
-            'weight' => 'required',
             'description' => 'required'
         ]);
 
@@ -172,12 +166,7 @@ class ProductController extends Controller
             'sku' => 'required|string|max:255|unique:products,sku,' . $product->id,
             'name' => 'required|string|max:255',
             'pricing_type' => 'required|string|max:255',
-            // 'mark_up' => 'required',
-            // 'markup_type' => 'required',
-            // 'surcharge_at_product' => 'required',
             'catergory_id' => 'required|integer',
-            'manufacturer_id' => 'required|integer',
-            'weight' => 'required',
             'description' => 'required'
         ]);
 

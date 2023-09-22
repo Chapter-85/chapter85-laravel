@@ -1,4 +1,4 @@
-<title>MG Metals</title>
+<title>Chapter 85</title>
 <meta name="description" content="Rhythm &mdash; One & Multi Page Creative Template">
 <meta charset="utf-8">
 <meta name="author" content="https://themeforest.net/user/bestlooker/portfolio">

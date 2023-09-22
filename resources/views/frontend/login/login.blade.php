@@ -73,8 +73,7 @@
                                                             placeholder="{{ __('login.Password') }}" id="password-input"
                                                             value="{{ old('login_password') }}" name="login_password"
                                                             required>
-                                                        <button class="btn btn-icon btn-mod show_paswd"
-                                                            type="button">
+                                                        <button class="btn btn-icon btn-mod show_paswd" type="button">
                                                             Show</button>
                                                         <div class="invalid-feedback">
                                                             <strong>{{ $errors->first('login_password') }}</strong>
@@ -192,7 +191,7 @@
                                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 mb-3">
+                                                {{-- <div class="col-12 mb-3">
                                                     <input id="referred_by" type="text"
                                                         placeholder="{{ __('login.referred_by') }}"
                                                         class="form-control @if ($errors->has('referred_by')) is-invalid @endif"
@@ -201,7 +200,7 @@
                                                     <div class="invalid-feedback">
                                                         <strong>{{ $errors->first('referred_by') }}</strong>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 {{-- <div class="col-12 mb-3">
                                                     <label class="radio-inline mr-3">
                                                         <input type="radio" name="customer_type" value="individual"

@@ -33,6 +33,7 @@ class HomeController extends Controller
         $_products = Product::with('category');
         $products = $_products->limit(3)->latest()->get();
 
+        // dd($products);
         return view('frontend.home.index', [
             'products' => $products,
         ]);
@@ -177,7 +178,7 @@ class HomeController extends Controller
         ]);
         VerificationCode::send($user->email);
         auth()->login($user);
-        return redirect(route('verify-code-view'));
+        return redirect(route('home'))->with('success', 'User Logged in Successfully');
     }
 
     public function verify_code(Request $request)

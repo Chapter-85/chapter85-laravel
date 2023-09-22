@@ -24,16 +24,7 @@
                     <a href="{{ route('about_us') }}" class="">{{ __('home_page.about_us') }}</i></a>
                 </li>
                 <li>
-                    <a href="{{ route('services') }}" class="">{{ __('home_page.our_service') }}</i></a>
-                </li>
-                <li>
                     <a href="{{ route('shop') }}" class="">{{ __('home_page.Rental Shop') }}</i></a>
-                </li>
-                <li>
-                    <a href="{{ route('ez-gold') }}" class="">{{ __('home_page.ez_gold') }}</i></a>
-                </li>
-                <li>
-                    <a href="{{ route('mg-pay') }}" class="">{{ __('home_page.mg_pay') }}</i></a>
                 </li>
                 <li>
                     <a href="{{ route('contact_us') }}" class="">{{ __('home_page.contact_us') }}</i></a>
@@ -50,12 +41,7 @@
                             <li>
                             <li><a href="{{ route('customer-orders') }}"
                                     class="text-center">{{ __('home_page.my_orders') }}</a></li>
-                            <li><a href="{{ route('customer-commissions') }}"
-                                    class="text-center">{{ __('home_page.my_commission') }}</a>
-                            </li>
-                            <li><a href="{{ route('customer-referrals') }}"
-                                    class="text-center">{{ __('home_page.my_referrals') }}</a>
-                            </li>
+
                             @if (\Auth::user()->hasRole('admin'))
                                 <li>
                                     <a href="{{ route('dashboard') }}"
@@ -87,7 +73,7 @@
                 <!-- End Divider -->
 
                 <!-- Languages -->
-                <li>
+                {{-- <li>
                     <a href="#" class="mn-has-sub">
                         @if (session()->get('locale') == 'ch_simple')
                             简体中文
@@ -103,7 +89,7 @@
                         <li><a href="{{ route('language', 'ch_simple') }}">简体中文</a></li>
                         <li><a href="{{ route('language', 'ch') }}">繁體中文 </a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <!-- End Languages -->
 
             </ul>
