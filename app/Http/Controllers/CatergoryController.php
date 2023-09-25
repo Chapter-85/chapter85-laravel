@@ -6,6 +6,7 @@ use App\Models\Catergory;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Database\QueryException;
+use File;
 
 class CatergoryController extends Controller
 {
@@ -52,8 +53,17 @@ class CatergoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'picture' => 'required|file|mimes:jpg,jpeg,png|max:2048'
         ]);
+        $input = $request->all();
 
+        $file_name = time() . '.' . $request->picture->extension();
+        $path = 'uploads/categories';
+        File::ensureDirectoryExists($path);
+
+        $request->picture->move(public_path($path), $file_name);
+
+        $input['picture'] = $file_name;
         Catergory::create($request->all());
 
         return redirect()->route('categories.index')
@@ -96,7 +106,21 @@ class CatergoryController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $category->update($request->all());
+        $input = $request->all();
+        // dd($input);
+
+        if ($request->hasFile('picture')) {
+            // dd($input);
+            $file_name = time() . '.' . $request->picture->extension();
+            $path = 'uploads/categories';
+            File::ensureDirectoryExists($path);
+
+            $request->picture->move(public_path($path), $file_name);
+
+            $input['picture'] = $file_name;
+        }
+
+        $category->update($input);
 
         return redirect()->route('categories.index')
             ->with('success', 'Catergory updated successfully.');

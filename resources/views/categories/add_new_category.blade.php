@@ -55,75 +55,23 @@
                         </div>
                     </div>
 
-                    {{-- <div class="col-md-4 col-sm-12">
+                    <div class="col-md-4 col-sm-12 mb-3">
                         <div class="form-label-group in-border">
-                            <label for="surcharge_at_category" class="form-label">Mark up at Category
-                                Level / 在不同級別加價 </label>
-                            <select id="surcharge_at_category" class="form-select form-control mb-3"
-                                name="surcharge_at_category" required>
-                                <option value="" @if (old('surcharge_at_category') == '') {{ 'selected' }} @endif
-                                    selected disabled>
-                                    Select One
-                                </option>
-                                <option value="yes" @if (old('surcharge_at_category') == 'yes') {{ 'selected' }} @endif>
-                                    Yes
-                                </option>
-                                <option value="no" @if (old('surcharge_at_category') == 'no') {{ 'selected' }} @endif>
-                                    No
-                                </option>
-                            </select>
+                            <label for="picture" class="form-label">Picture </label>
+                            <input type="file"
+                                class="form-control @if ($errors->has('picture')) is-invalid @endif" id="picture"
+                                name="picture" placeholder="Please Enter Account Name" value="{{ old('picture') }}"
+                                required>
                             <div class="invalid-tooltip">
-                                @if ($errors->has('surcharge_at_category'))
-                                    {{ $errors->first('surcharge_at_category') }}
+                                @if ($errors->has('picture'))
+                                    {{ $errors->first('picture') }}
                                 @else
-                                    Mark up at Product Level is required!
+                                    Picture is required!
                                 @endif
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4 col-sm-12">
-                        <div class="form-label-group in-border">
-                            <label for="markup_type" class="form-label">Mark up Type (加價類型)</label>
-                            <select id="markup_type" class="form-select form-control mb-3" name="markup_type" disabled>
-                                <option value="" @if (old('markup_type') == '') {{ 'selected' }} @endif
-                                    selected disabled>
-                                    Select One
-                                </option>
-                                <option value="flat" @if (old('markup_type') == 'flat') {{ 'selected' }} @endif>
-                                    Flat (餵價)
-                                </option>
-                                <option value="percentage"
-                                    @if (old('markup_type') == 'percentage') {{ 'selected' }} @endif>
-                                    Percentage (定價)
-                                </option>
-                            </select>
-                            <div class="invalid-tooltip">
-                                @if ($errors->has('markup_type'))
-                                    {{ $errors->first('markup_type') }}
-                                @else
-                                    Mark up Type is required!
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-12">
-                        <div class="form-label-group in-border">
-                            <label for="mark_up" class="form-label">Mark Up Amount / 加價金額 </label>
-                            <input type=number step=any
-                                class="form-control @if ($errors->has('mark_up')) is-invalid @endif"
-                                id="mark_up" name="mark_up" placeholder="Please Enter Mark Up Amount"
-                                value="{{ old('mark_up') }}" disabled>
-                            <div class="invalid-tooltip">
-                                @if ($errors->has('mark_up'))
-                                    {{ $errors->first('mark_up') }}
-                                @else
-                                    Mark Up Amount is required!
-                                @endif
-                            </div>
-                        </div>
-                    </div> --}}
 
                     <div class="col-12 text-end">
                         <button class="btn btn-primary" type="submit">Save Changes</button>
