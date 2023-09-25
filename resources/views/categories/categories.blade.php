@@ -44,6 +44,20 @@
             </div>
         </div>
     </div>
+    <div class="modal flipInUp" id="domicile-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content animated flipInUp">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img class="d-block w-100" src="{{ $category->picture_url }}" alt="domicile">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <input id="ajaxRoute" value="{{ route('categories.index') }}" hidden />
 @endsection
 
