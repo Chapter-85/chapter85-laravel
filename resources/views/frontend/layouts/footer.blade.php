@@ -13,7 +13,7 @@
         </div>
         <div class="footer-text mt-20">
             <div class="footer-made">
-                Copyright © 2022 MG Metals.HK
+                Copyright © 2023 Chapter 85
             </div>
         </div>
     </div>
