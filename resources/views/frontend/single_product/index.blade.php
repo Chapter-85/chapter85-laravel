@@ -28,11 +28,7 @@
                 </div>
 
                 <div class="col-sm-12 col-md-8 mb-xs-20">
-
                     <h3 class="mt-0">{{ $product->name }} </h3>
-
-
-
                     @if ($product->productsQuantity() != null)
                         <div class="intro-label">
                             <span class="badge badge-primary bg-green">In Stock</span>
@@ -44,83 +40,48 @@
                     @endif
 
                     <p class="mt-0">
-
                         {{ $product->description }}
-
                     </p>
 
-
-
-                    @if (\Auth::user())
-                        <hr class="mt-0 mb-30" />
-                        <div class="row">
-                            <div class="col-6 lead mt-0 mb-20">
-                                <strong>{{ $product->getProductPrice() }}</strong>
-                            </div>
+                    <hr class="mt-0 mb-30" />
+                    <div class="row">
+                        <div class="col-6 lead mt-0 mb-20">
+                            <strong>{{ $product->getProductPrice() }}</strong>
                         </div>
-                    @endif
-
-
-                    <!-- <div class="section-text mb-30">
-
-                                                            {{ $product->description }}
-
-
-                                                    </div> -->
+                    </div>
 
                     <div class="section-text small">
                         <div>SKU: {{ $product->sku }}</div>
                         <div>{{ __('home_page.Category') }}:
-
                             <a href="{{ route('shop', ['category' => $product->category->id]) }}">
                                 {{ $product->category->name }}</a>
-
-
                         </div>
                     </div>
 
-
                     <div class="mb-30 mt-20 btns">
+                        <hr class="mt-0 mb-30" />
+                        <form method="post" action="{{ route('shop-cart.store') }}" class="form" id="shor_cart_form">
+                            {{-- <form method="post" action="{{ route('customer-products.store') }}" class="form"> --}}
+                            @csrf
+                            <input name="quantity" id="quantity" type="number" class="input-lg round" min="1"
+                                max="5" value="1" />
+                            <input type="text" id="user_id" value="{{ \Auth::user()->id }}" name="user_id" hidden>
+                            <input type="text" id="product_id" value="{{ $product->id }}" name="product_id" hidden>
+                            <input type="text" id="status" value="pending" name="status" hidden>
+                            <input type="text" id="spot_price" value="{{ $product->getProductPrice($type = 'number') }}"
+                                name="spot_price" hidden>
+                            <input type="text" id="referral_code" value="{{ \Auth::user()->referred_by }}"
+                                name="referral_code" hidden>
 
-                        @if (\Auth::user())
-                            <hr class="mt-0 mb-30" />
-                            <form method="post" action="{{ route('shop-cart.store') }}" class="form"
-                                id="shor_cart_form">
-                                {{-- <form method="post" action="{{ route('customer-products.store') }}" class="form"> --}}
-                                @csrf
-                                <input name="quantity" id="quantity" type="number" class="input-lg round" min="1"
-                                    max="5" value="1" />
-                                <input type="text" id="user_id" value="{{ \Auth::user()->id }}" name="user_id" hidden>
-                                <input type="text" id="product_id" value="{{ $product->id }}" name="product_id" hidden>
-                                <input type="text" id="status" value="pending" name="status" hidden>
-                                <input type="text" id="spot_price"
-                                    value="{{ $product->getProductPrice($type = 'number') }}" name="spot_price" hidden>
-                                <input type="text" id="referral_code" value="{{ \Auth::user()->referred_by }}"
-                                    name="referral_code" hidden>
+                            <button type="submit"
+                                class="btn btn-mod btn-large btn-round">{{ __('home_page.ad_to_cart') }}</button>
 
-                                <button type="submit"
-                                    class="btn btn-mod btn-large btn-round">{{ __('home_page.ad_to_cart') }}</button>
-                            @else
-                                <a href="{{ route('customer_login') }}"
-                                    class="  btn btn-mod btn-large btn-round">{{ __('home_page.buy_now') }}</a>
-                        @endif
-                        <a href="{{ route('shop') }}" class="btn-mod btn-large btn-round"
-                            style="background:rgb(234 163 0) !important;color:#333 !important;margin-left:15px; margin-top:10px">{{ __('home_page.cont_shop') }}</a>
+                            <a href="{{ route('shop') }}" class="btn-mod btn-large btn-round"
+                                style="background:rgb(234 163 0) !important;color:#333 !important;margin-left:15px; margin-top:10px">{{ __('home_page.cont_shop') }}</a>
                         </form>
-
-                        {{-- <button type="button" data-toggle="modal" data-target="#exampleModalCenter"
-                                class="btn btn-mod btn-large btn-round">Buy
-                                Now</button> --}}
-
                     </div>
-
-
-
                 </div>
             </div>
-
-
-            <!-- End Tab panes -->
         </div>
     </section>
 
