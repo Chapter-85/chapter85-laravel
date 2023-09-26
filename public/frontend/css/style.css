@@ -7911,7 +7911,12 @@ footer.bg-gray-lighter{
     }
 
 }
-@media only screen and (max-width: 600px) {
+@media screen and (min-width:320px) and (max-width:399px){
+
+   .bg-video{
+    width: 300px;
+   }
+
 
     .container {
 
@@ -8018,7 +8023,7 @@ footer.bg-gray-lighter{
     .home-section-banner{
         height: 400px !important;
     }
-    .home-section-banner .bg-video{
+    .home-section-banner{
         height: 400px !important;
     }
     .home-section-banner .js-height-full{
@@ -8430,4 +8435,20 @@ footer.bg-gray-lighter{
     padding:30px 20px;
     background-color: #fff;
     margin-top: 30px;
+}
+.img-div{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-hover{
+transition: 0.5s;
+box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover:hover{
+    cursor: pointer;
+    width: 80%;
+    transform: scale(1.1);
+    z-index: 1;
 }

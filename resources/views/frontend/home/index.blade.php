@@ -6,6 +6,9 @@
     @include('frontend.home.shop')
 
     <hr class="mt-0 mb-0" />
+    @include('frontend.home.best_sellers')
+
+    <hr class="mt-0 mb-0" />
     @include('frontend.home.about')
     <hr class="mt-0 mb-0" />
 
@@ -76,19 +79,6 @@
 
         </div>
     </section>
-
-    {{-- <section class="small-section bg-dark">
-        <div class="container relative">
-
-            <div class="align-center">
-                <h3 class="banner-heading font-alt">Want to discuss your new project?</h3>
-                <div>
-                    <a href="#" class="btn btn-mod btn-w btn-medium btn-round">Lets tallk</a>
-                </div>
-            </div>
-
-        </div>
-    </section> --}}
 @endsection
 
 
