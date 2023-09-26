@@ -59,7 +59,7 @@ class Catergory extends Model
     {
         $image = asset('frontend/images/shop/product-placeholder.jpg');
 
-        if (!empty($this->picture) && file_exists('uploads/products/' . $this->picture)) {
+        if (!empty($this->picture) && file_exists('uploads/categories/' . $this->picture)) {
             $image = asset('uploads/categories/' . $this->picture);
         }
 

@@ -6,9 +6,10 @@
             </div>
 
             <div class="card-body">
-                <form class="row  needs-validation" action="{{ route('categories.store') }}" method="POST" novalidate>
+                <form class="row  needs-validation" action="{{ route('categories.store') }}" method="POST"
+                    enctype="multipart/form-data" novalidate>
                     @csrf
-                    <div class="col-md-4 col-sm-12 mb-3">
+                    <div class="col-md-6 col-sm-12 mb-3">
                         <div class="form-label-group in-border">
                             <label for="name" class="form-label">Category Name</label>
                             <input type="text"
@@ -24,7 +25,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 col-sm-12 mb-3">
+                    <div class="col-md-6 col-sm-12 mb-3">
                         <div class="form-label-group in-border">
                             <label for="abbreviation" class="form-label">Abbreviation </label>
                             <input type="text"
@@ -36,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-6 mb-3">
                         <div class="form-label-group in-border">
                             <label for="user_id" class="form-label">Categories</label>
                             <select class="form-select form-control mb-3" name="parent_id">
@@ -55,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 col-sm-12 mb-3">
+                    <div class="col-md-6 col-sm-12 mb-3">
                         <div class="form-label-group in-border">
                             <label for="picture" class="form-label">Picture </label>
                             <input type="file"
