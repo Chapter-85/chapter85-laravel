@@ -57,10 +57,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="{{ route('shop-cart.index') }}"><i class="fa fa-shopping-cart"></i>
-                            Cart (<span id="shop_cart_count">{{ \Auth::user()->cart_count }}</span>) </a>
-                    </li>
                 @else
                     <li>
                         <a href="{{ route('customer_login') }}" class="">
@@ -68,29 +64,10 @@
                             {{ __('home_page.login') }}</i></a>
                     </li>
                 @endif
-                <!-- Divider -->
-                {{-- <li><a>&nbsp;</a></li> --}}
-                <!-- End Divider -->
-
-                <!-- Languages -->
-                {{-- <li>
-                    <a href="#" class="mn-has-sub">
-                        @if (session()->get('locale') == 'ch_simple')
-                            简体中文
-                        @elseif (session()->get('locale') == 'ch')
-                            繁體中文
-                        @else
-                            En
-                        @endif
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="mn-sub">
-                        <li><a href="{{ route('language', 'en') }}">En</a></li>
-                        <li><a href="{{ route('language', 'ch_simple') }}">简体中文</a></li>
-                        <li><a href="{{ route('language', 'ch') }}">繁體中文 </a></li>
-                    </ul>
-                </li> --}}
-                <!-- End Languages -->
+                <li>
+                    <a href="{{ route('shop-cart.index') }}"><i class="fa fa-shopping-cart"></i>
+                        Cart (<span id="shop_cart_count">{{ \Auth::user() ? \Auth::user()->cart_count : 0 }}</span>) </a>
+                </li>
 
             </ul>
         </div>

@@ -48,15 +48,13 @@
             <span class="ss-icon left" onclick="galleryspin('-')">&lt;</span>
             <span class="ss-icon right" onclick="galleryspin('')">&gt;</span>
         </div>
-        <div class="row multi-columns-row">
+        {{-- <div class="row multi-columns-row">
 
             @foreach ($products as $product)
                 @include('frontend.products.product_section')
-                {{-- @empty
-                <div class="alert alert-dark" role="alert"> {{ __('home_page.No_products_Found') }}</div> --}}
             @endforeach
 
-        </div>
+        </div> --}}
 
     </div>
 </section>
