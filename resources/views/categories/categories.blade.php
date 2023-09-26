@@ -49,7 +49,9 @@
             <div class="modal-content animated flipInUp">
                 <div class="modal-body">
                     <div class="text-center">
-                        <img class="d-block w-100" src="{{ $category->picture_url }}" alt="domicile">
+                        @if (isset($category))
+                            <img class="d-block w-100" src="{{ $category->picture_url }}" alt="domicile">
+                        @endif
                     </div>
                 </div>
                 <div class="modal-footer">

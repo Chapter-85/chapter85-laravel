@@ -61,10 +61,11 @@ class CatergoryController extends Controller
         $path = 'uploads/categories';
         File::ensureDirectoryExists($path);
 
+        // dd(public_path($path),$file_name);
         $request->picture->move(public_path($path), $file_name);
 
         $input['picture'] = $file_name;
-        Catergory::create($request->all());
+        Catergory::create($input);
 
         return redirect()->route('categories.index')
             ->with('success', 'Category created successfully.');
