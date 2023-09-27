@@ -68,6 +68,7 @@ Route::get('account/verify/{token}', [HomeCtrl::class, 'verifyAccount'])->name('
 Route::get('/ez-gold', [HomeCtrl::class, 'ez_gold'])->name('ez-gold');
 Route::get('/mg-pay', [HomeCtrl::class, 'mg_pay'])->name('mg-pay');
 Route::get('verify-email/{code}', [CustomerController::class, 'verify_email'])->name('verify-email');
+Route::resources(['shop-cart' => ShopCartController::class]);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -83,7 +84,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resources(['product-commission' => ProductCommissionController::class]);
     Route::resources(['orders' => OrderController::class]);
     Route::resources(['inventories' => InventoryController::class]);
-    Route::resources(['shop-cart' => ShopCartController::class]);
     Route::resources(['delivery-charges' => DeliveryChargesController::class]);
     Route::resources(['exchange-rate' => ExchangeRateController::class]);
     Route::resources(['setup' => SetupController::class]);

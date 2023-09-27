@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Setup;
 use App\Models\ShopCart;
 use App\Models\User;
+use App\Models\Customer;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -19,22 +20,29 @@ class ShopCartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = \Auth::user();
-        $cart = ShopCart::where(['user_id' => $user->id, 'status' => 'pending'])->get();
-        $created_at = ShopCart::where(['user_id' => $user->id, 'status' => 'pending'])->get();
+        if (!isset($user)) {
+            $cart = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->get();
+        } else {
+            $cart = ShopCart::where(['user_id' => $user->id, 'status' => 'pending'])->get();
+        }
 
         $total_price = 0;
         foreach ($cart as $key => $value) {
             $total_price = $value->total_price + $total_price;
         }
-        $hkd_price = ExchangeRate::latest()->first();
+        // $hkd_price = ExchangeRate::latest()->first();
         $delivery_methods = Setup::all();
         $payment_methods = PaymentMethod::all();
         $now = Carbon::now();
+        $cart_count = 0;
+        if (!isset(\Auth::user()->id)) {
+            $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
+        }
         // dd($now);
-        return view('frontend.shop_cart.index', ['delivery_methods' => $delivery_methods, 'payment_methods' => $payment_methods, 'now' => $now, 'carts' => $cart, 'total_price' => $total_price, 'hkd_price' => $hkd_price->rate]);
+        return view('frontend.shop_cart.index', ['delivery_methods' => $delivery_methods, 'payment_methods' => $payment_methods, 'now' => $now, 'carts' => $cart, 'total_price' => $total_price, 'hkd_price' => 0, 'cart_count' => $cart_count]);
     }
 
     /**
@@ -56,26 +64,33 @@ class ShopCartController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => ['required'],
             'product_id' => ['required'],
             'spot_price' => ['required'],
             'quantity' => ['required'],
-            // 'referral_code' => ['required', 'string', 'min:6', 'max:6'],
         ]);
-        // dd($request->all());
-        // if (\Auth::user()->is_verified == 1) {
         $product = Product::find($request->product_id);
         $result = $product->productsInventory($request->quantity);
         if ($result != null) {
             $input = $request->all();
             $input['total_price'] = $request->quantity * $request->spot_price;
-            ShopCart::create($input);
-
-            return ['success' => 'Item Added to Cart Successfully', 'cart_count' => \Auth::user()->cart_count];
+            if (!isset($request->user_id)) {
+                $input['session_id'] = $request->cookie('laravel_session');
+                $shoppingCart = ShopCart::where(['session_id' => $input['session_id'], 'status' => 'pending'])->first();
+                if (!$shoppingCart) {
+                    ShopCart::create($input);
+                } else {
+                    $shoppingCart->quantity = $shoppingCart->quantity + $request->quantity;
+                    $shoppingCart->total_price = $shoppingCart->quantity * $request->spot_price;
+                    $shoppingCart->save();
+                }
+                $shoppingCartItems = ShopCart::where(['session_id' => $input['session_id'], 'status' => 'pending'])->count();
+                return ['success' => 'Item Added to Cart Successfully', 'cart_count' => $shoppingCartItems];
+            } else {
+                ShopCart::create($input);
+                return ['success' => 'Item Added to Cart Successfully', 'cart_count' => \Auth::user()->cart_count];
+            }
         }
         return ['error' => 'Product is not in stock'];
-        // }
-        // return ['error' => 'User is not verified'];
     }
 
     /**

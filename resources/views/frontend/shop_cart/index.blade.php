@@ -9,10 +9,7 @@
                     class="form">
                     @csrf
                     <div class="col-lg-10 offset-lg-1 col-xl-10 offset-xl-1">
-                        <div class="time-block" id="time_block" style="display: none">
-                            <div class="Timer"> </div>
-                        </div>
-                        <input type="hidden" id="now" value="{{ $now }}">
+
                         <div class="card mt-10 mb-10">
                             <div class="card-header">
                                 <h5 class="card-title flex-grow-1 mb-0">Your Cart</h5>
@@ -35,8 +32,10 @@
                                             <input type="hidden" id="created_at" value="{{ $cart->created_at }}">
                                             <input type="text" id="cart_ids" name="cart_ids[]"
                                                 value="{{ $cart->id }}" hidden>
-                                            <input type="text" id="user_id" value="{{ \Auth::user()->id }}"
-                                                name="user_id" hidden>
+                                            @if (isset(\Auth::user()->id))
+                                                <input type="text" id="user_id" value="{{ \Auth::user()->id }}"
+                                                    name="user_id" hidden>
+                                            @endif
                                             <tr>
                                                 <td> <img src="{{ $cart->product->product_picture_url }}" alt=""
                                                         style="height: 100px;" /> </td>
@@ -261,60 +260,6 @@
             })
 
             let user_id = $('#user_id').val();
-
-            if ($('#created_at').val() != undefined) {
-
-                console.log($('#created_at').val());
-
-                document.getElementById('time_block').style.display = "flex";
-
-                var countDownDate = moment($('#created_at').val()).add(15, 'minutes').toString();
-
-                var now_backend = $('#now').val();
-                console.log("CountDown Date", countDownDate);
-                console.log("Now: ", now_backend);
-
-                var x = setInterval(function() {
-
-                    var now = moment();
-                    var minutes = moment(countDownDate).diff(now, 'minutes');
-                    var seconds = moment(countDownDate).diff(now, 'seconds');
-
-                    // console.log('minutes', minutes, 'seconds', seconds);
-
-
-                    var now_time = countDownDate;
-                    var then = now.toString();
-
-                    var hours = moment.utc(moment(now_time).diff(moment(then))).format("mm:ss")
-
-                    $('.Timer').text(hours);
-
-                    if (minutes < 0 || seconds < 0) {
-
-                        clearInterval(x);
-                        $('.Timer').text("EXPIRED");
-
-                        $.ajax({
-                            url: '/remove-shop-cart/' + user_id,
-                            type: "GET",
-                            data: {
-                                "_token": "{{ csrf_token() }}",
-                            },
-                            success: function(response) {
-                                // alert('hello')
-                                console.log(response);
-                                if (response) {
-                                    location.reload();
-                                }
-                            },
-                            error: function(error) {
-                                console.log(error)
-                            }
-                        });
-                    }
-                }, 1000);
-            }
 
             $('#customer_products_store').on('submit', function(e) {
                 e.preventDefault();

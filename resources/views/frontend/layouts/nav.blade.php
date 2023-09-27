@@ -66,7 +66,9 @@
                 @endif
                 <li>
                     <a href="{{ route('shop-cart.index') }}"><i class="fa fa-shopping-cart"></i>
-                        Cart (<span id="shop_cart_count">{{ \Auth::user() ? \Auth::user()->cart_count : 0 }}</span>) </a>
+                        Cart (<span
+                            id="shop_cart_count">{{ \Auth::user() ? \Auth::user()->cart_count : $cart_count }}</span>)
+                    </a>
                 </li>
 
             </ul>
