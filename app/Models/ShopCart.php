@@ -13,6 +13,7 @@ class ShopCart extends Model
 
     protected $fillable = [
         'user_id',
+        'session_id',
         'product_id',
         'spot_price',
         'total_price',

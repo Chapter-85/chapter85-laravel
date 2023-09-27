@@ -13,6 +13,7 @@ use App\Models\CustomerShareholder;
 use App\Models\AuthorizedTradingRepresentative;
 use App\Models\Nationality;
 use App\Models\Order;
+use App\Models\ShopCart;
 use App\Models\OrderProduct;
 use App\Models\ProductCommission;
 use App\Models\UserVerify;
@@ -28,14 +29,18 @@ use NextApps\VerificationCode\VerificationCode;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $_products = Product::with('category');
         $products = $_products->limit(3)->latest()->get();
-
+        $cart_count = 0;
+        if (!isset(\Auth::user()->id)) {
+            $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
+        }
         // dd($products);
         return view('frontend.home.index', [
             'products' => $products,
+            'cart_count' => $cart_count
         ]);
     }
 
@@ -66,31 +71,47 @@ class HomeController extends Controller
 
         $categories = Catergory::whereNull('parent_id')->with(['children'])->get();
         $manufacturers = Manufacturer::all();
-
+        $cart_count = 0;
+        if (!isset(\Auth::user()->id)) {
+            $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
+        }
 
         return view('frontend.products.index', [
             'products' => $products,
             'categories' => $categories,
             'manufacturers' => $manufacturers,
             'best_sellers' =>  Product::with('category')->limit(10)->latest()->get(),
+            'cart_count' => $cart_count
             // 'results_count' => $_products->count(),
             // 'total_count' => Product::with('category')->count(),
         ]);
     }
 
-    public function about_us()
+    public function about_us(Request $request)
     {
-        return view('frontend.about_us.index');
+        $cart_count = 0;
+        if (!isset(\Auth::user()->id)) {
+            $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
+        }
+        return view('frontend.about_us.index', ['cart_count' => $cart_count]);
     }
 
-    public function services()
+    public function services(Request $request)
     {
-        return view('frontend.services.index');
+        $cart_count = 0;
+        if (!isset(\Auth::user()->id)) {
+            $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
+        }
+        return view('frontend.services.index', ['cart_count' => $cart_count]);
     }
 
-    public function contact_us()
+    public function contact_us(Request $request)
     {
-        return view('frontend.contact_us.index');
+        $cart_count = 0;
+        if (!isset(\Auth::user()->id)) {
+            $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
+        }
+        return view('frontend.contact_us.index', ['cart_count' => $cart_count]);
     }
 
     public function login()
@@ -213,7 +234,7 @@ class HomeController extends Controller
         return view('frontend.verify_email.verify_email', ['email' => $user->email]);
     }
 
-    public function profile()
+    public function profile(Request $request)
     {
         $user = \Auth::user();
         $customer = Customer::where('user_id', $user->id)->first();
@@ -235,8 +256,11 @@ class HomeController extends Controller
         $shareholders = CustomerShareholder::with('customer')->where('customer_id', $customer->id)->latest()->get();
         $representatives = AuthorizedTradingRepresentative::with('customer')->where('customer_id', $customer->id)->latest()->get();
         $nationalities = Nationality::all();
-
-        return view('frontend.profile.profile', ['shareholders' => $shareholders, 'representatives' => $representatives, 'customer' => $customer, 'nationalities' => $nationalities]);
+        $cart_count = 0;
+        if (!isset(\Auth::user()->id)) {
+            $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
+        }
+        return view('frontend.profile.profile', ['cart_count' => $cart_count, 'shareholders' => $shareholders, 'representatives' => $representatives, 'customer' => $customer, 'nationalities' => $nationalities]);
     }
 
     public function switch_language($locale)
@@ -252,11 +276,14 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function single_product($id)
+    public function single_product(Request $request, $id)
     {
         $product = Product::where(['id' => $id])->with(['category', 'manufacturer'])->first();
-        // dd($product->toArray());
-        return view('frontend.single_product.index', compact('product'));
+        $cart_count = 0;
+        if (!isset(\Auth::user()->id)) {
+            $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
+        }
+        return view('frontend.single_product.index', compact('product', 'cart_count'));
     }
 
     public function applicant_information_individual(Request $request)

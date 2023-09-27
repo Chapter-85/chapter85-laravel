@@ -65,13 +65,16 @@
                             @csrf
                             <input name="quantity" id="quantity" type="number" class="input-lg round" min="1"
                                 max="5" value="1" />
-                            <input type="text" id="user_id" value="{{ \Auth::user()->id }}" name="user_id" hidden>
+                            @if (isset(\Auth::user()->id))
+                                <input type="text" id="user_id" value="{{ \Auth::user()->id }}" name="user_id" hidden>
+                                <input type="text" id="customer_type" value="auth" name="customer_type" hidden>
+                            @else
+                                <input type="text" id="customer_type" value="walk-in" name="customer_type" hidden>
+                            @endif
                             <input type="text" id="product_id" value="{{ $product->id }}" name="product_id" hidden>
                             <input type="text" id="status" value="pending" name="status" hidden>
                             <input type="text" id="spot_price" value="{{ $product->getProductPrice($type = 'number') }}"
                                 name="spot_price" hidden>
-                            <input type="text" id="referral_code" value="{{ \Auth::user()->referred_by }}"
-                                name="referral_code" hidden>
 
                             <button type="submit"
                                 class="btn btn-mod btn-large btn-round">{{ __('home_page.ad_to_cart') }}</button>
@@ -162,7 +165,7 @@
                 let product_id = $('#product_id').val();
                 let user_id = $('#user_id').val();
                 let quantity = $('#quantity').val();
-                let referral_code = $('#referral_code').val();
+                let customer_type = $('#customer_type').val();
                 const url = $('#shor_cart_form').attr('action');
                 $.ajax({
                     url: url,
@@ -174,13 +177,14 @@
                         product_id: product_id,
                         user_id: user_id,
                         quantity: quantity,
-                        referral_code: referral_code,
-                        created_at: now
+                        created_at: now,
+                        customer_type: customer_type
                     },
                     success: function(response) {
                         // alert('hello')
                         console.log(response.error);
                         if (response.success) {
+                            console.log(response.cart_count)
                             // document.getElementById('total_price_usd').style.display = "none";
                             document.getElementById('success_div').style.display = "block";
                             document.getElementById('err_div').style.display = "none";
