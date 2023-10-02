@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Favicons -->
-<link rel="shortcut icon" href="images/favicon.png">
+<link rel="shortcut icon" href="{{ asset('frontend/images/logo-black.png') }}">
 
 <base href="{{ asset('frontend/') }}">
 
