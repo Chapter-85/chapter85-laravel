@@ -1663,7 +1663,7 @@ a.bg-video-button-muted {
 .nav-logo-wrap .logo img {
     max-height: 100%;
     height: auto;
-    width: 180px;
+    /* width: 180px; */
 }
 .nav-logo-wrap .logo:before,
 .nav-logo-wrap .logo:after {
