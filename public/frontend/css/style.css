@@ -1156,6 +1156,12 @@ a.btn-mod:focus {
 .home-content {
     position: relative;
 }
+
+.center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 .home-text {
     display: table-cell;
     height: 100%;
@@ -1169,7 +1175,7 @@ a.btn-mod:focus {
     font-family: 'Playfair Display', serif !important;
 }
 .home-text .banner-heading{
-    font-size: 83px;
+    font-size: 50px;
     line-height: 1.25em;
     text-align: center;
     color: #fffef8 !important;
@@ -1243,7 +1249,7 @@ table tr td .btn{
     }
 }
 .pt-450{
-    padding-top: 250px !important;
+    padding-top: 100px !important;
 }
 .scroll-down {
     width: 40px;
@@ -3957,7 +3963,7 @@ hr:not([size]){
 .banner-heading {
     margin-top: 0;
     margin-bottom: 20px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -7276,7 +7282,7 @@ section:hover .small-item-carousel .owl-next {
     background:rgba(0,0,0,.5);
 }
 .home-section-banner {
-    height: 920px;
+    height: 620px;
 }
 .home-section-banner .js-height-full {
     position: absolute;

@@ -25,7 +25,7 @@
                     <div class="row">
 
                         <!-- Phone -->
-                        <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
+                        <div class="col-sm-6 col-lg-6 center-content pt-20 pb-20 pb-xs-0">
                             <div class="contact-item">
                                 <div class="ci-icon">
                                     <i class="fa fa-phone"></i>
@@ -34,14 +34,14 @@
                                     {{ __('home_page.call_us') }}
                                 </div>
                                 <div class="ci-text">
-                                    (852) 3998 4916
+                                    (+92) 302 652 6000
                                 </div>
                             </div>
                         </div>
                         <!-- End Phone -->
 
                         <!-- Address -->
-                        <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
+                        {{-- <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
                             <div class="contact-item">
                                 <div class="ci-icon">
                                     <i class="fa fa-map-marker"></i>
@@ -53,11 +53,11 @@
                                     {{ __('home_page.Unit F, 18F, MG Tower, 133 Hoi Bun Road, Kwun Tong, Kowloon, Hong Kong') }}
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- End Address -->
 
                         <!-- Email -->
-                        <div class="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
+                        <div class="col-sm-6 col-lg-6 center-content pt-20 pb-20 pb-xs-0">
                             <div class="contact-item">
                                 <div class="ci-icon">
                                     <i class="fa fa-envelope"></i>
