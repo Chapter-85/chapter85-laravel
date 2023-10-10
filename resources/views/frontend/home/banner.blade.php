@@ -5,9 +5,9 @@
         <div class="home-content container">
             <div class="home-text pt-450">
 
-                <h1 class="hs-line-8 font-alt mb-30 mb-xs-30 text-white">Lorem Ipsum is simply dummy text</h1>
+                <h1 class="hs-line-8 font-alt mb-30 mb-xs-30 text-white">Chapter 85</h1>
                 <h2 class="banner-heading hs-line-11 font-alt mb-50 mb-xs-30 text-white">
-                    Lorem Ipsum is simply dummy text </h2>
+                    Where Comfort Meets Class </h2>
 
                 <div class="local-scroll">
                     <a href="{{ route('contact_us') }}"

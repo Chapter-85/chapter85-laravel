@@ -11,12 +11,18 @@
                 <div class="col-md-2 col-12"></div>
                 <div class="col-md-5 col-12">
                     <p>
-                        {{ __('home_page.home_about_col_1') }}
+                        At Chapter 85, we craft more than just leather goods; we craft legacies. Established with a
+                        vision to redefine the essence of elegant masculinity, we specialize in handcrafting exquisite
+                        leather shoes and wallets exclusively for men. Our creations are a testament to the enduring
+                        allure of leather, meticulously molded by master craftsmen to offer a blend of timeless
+                        elegance, contemporary sophistication, and unrivaled comfort.
                     </p>
                 </div>
                 <div class="col-md-5 col-12">
                     <p>
-                        {{ __('home_page.home_about_col_2') }}
+                        We invite you to experience the profound journey of luxury and elegance with Chapter 85. Step
+                        into a world where the charm of yesterday meets the elegance of today, and make a statement that
+                        transcends time.
                     </p>
                 </div>
             </div>
