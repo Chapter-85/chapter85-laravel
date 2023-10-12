@@ -7372,7 +7372,7 @@ section:hover .small-item-carousel .owl-next {
   }
   figure#spinner figure.focus img {
     width: 100%;
-    height: 100%;
+    height: 375px;
   }
   figcaption {
     position: absolute;

@@ -10,29 +10,26 @@
             <div class="row">
                 <div class="col-md-4 col-12 mt-2">
                     <div class="card">
-                        <img src="https://shoe-hub.com/wp-content/uploads/2023/08/WhatsApp-Image-2021-12-10-at-3.10.39-PM-1-800x800.jpeg"
-                            class="image" alt="">
+                        <img src="{{ asset('frontend/images/productImages/1.JPG') }}" class="image" alt="">
                         <div class="middle">
-                            <button class="text">See Product</button>
+                            <p>Some Product Info</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-12 mt-2">
                     <div class="card">
-                        <img src="https://shoe-hub.com/wp-content/uploads/2023/08/WhatsApp-Image-2021-12-10-at-3.10.39-PM-1-800x800.jpeg"
-                            class="image" alt="">
+                        <img src="{{ asset('frontend/images/productImages/2.JPG') }}" class="image" alt="">
                         <div class="middle">
-                            <button class="text">See Product</button>
+                            <p>Some Product Info</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-12 mt-2">
                     <div class="card">
-                        <img src="https://shoe-hub.com/wp-content/uploads/2023/08/WhatsApp-Image-2021-12-10-at-3.10.39-PM-1-800x800.jpeg"
-                            class="image" alt="">
+                        <img src="{{ asset('frontend/images/productImages/3.JPG') }}" class="image" alt="">
                         <div class="middle">
-                            <button class="text">See Product</button>
+                            <p>Some Product Info</p>
                             {{-- <div class="text">John</div> --}}
                         </div>
                     </div>
