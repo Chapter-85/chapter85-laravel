@@ -12,38 +12,26 @@
             <div id="carousel">
                 <figure id="spinner">
                     <figure>
-                        <img src="https://static.wixstatic.com/media/942665_92e06b31325242d3bf7e64c956477ed5~mv2.png/v1/fill/w_506,h_314,al_c,q_80,usm_0.66_1.00_0.01/942665_92e06b31325242d3bf7e64c956477ed5~mv2.png"
-                            alt="">
+                        <img src="{{ asset('frontend/images/productImages/5-removebg-preview.png') }}" alt="">
 
                     </figure>
                     <figure>
-                        <img src="https://static.wixstatic.com/media/942665_597ed5891a5a42a0921e7e65a586ba9a~mv2.png/v1/fill/w_506,h_314,al_c,q_80,usm_0.66_1.00_0.01/942665_597ed5891a5a42a0921e7e65a586ba9a~mv2.png"
-                            alt="">
+                        <img src="{{ asset('frontend/images/productImages/4-removebg-preview.png') }}" alt="">
 
                     </figure>
                     <figure>
-                        <img src="https://static.wixstatic.com/media/942665_9af3ae93941848c0b0313659d8386002~mv2.png/v1/fill/w_506,h_314,al_c,q_80,usm_0.66_1.00_0.01/942665_9af3ae93941848c0b0313659d8386002~mv2.png"
-                            alt="">
+                        <img src="{{ asset('frontend/images/productImages/6-removebg-preview.png') }}" alt="">
 
                     </figure>
                     <figure>
-                        <img src="https://static.wixstatic.com/media/942665_754ec09e17da4c5dbb9cead593cbff70~mv2.png/v1/fill/w_506,h_314,al_c,q_80,usm_0.66_1.00_0.01/942665_754ec09e17da4c5dbb9cead593cbff70~mv2.png"
-                            alt="">
+                        <img src="{{ asset('frontend/images/productImages/7-removebg-preview.png') }}" alt="">
 
                     </figure>
                     <figure>
-                        <img src="https://static.wixstatic.com/media/942665_880c29284c0e4612a82ddd27f838b703~mv2.png/v1/fill/w_506,h_314,al_c,q_80,usm_0.66_1.00_0.01/942665_880c29284c0e4612a82ddd27f838b703~mv2.png"
-                            alt="">
+                        <img src="{{ asset('frontend/images/productImages/8-removebg-preview.png') }}" alt="">
 
                     </figure>
-                    <!-- <figure>
-                <img src="https://static.wixstatic.com/media/942665_4c4369947bde4d4bae4c03f2d7016f5e~mv2.png/v1/fill/w_506,h_314,al_c,q_80,usm_0.66_1.00_0.01/942665_4c4369947bde4d4bae4c03f2d7016f5e~mv2.png" alt="">
 
-                </figure>
-                <figure>
-                    <img src="https://static.wixstatic.com/media/942665_0df93f07b4c64809854f38f33b5ab6d0~mv2.png/v1/fill/w_506,h_314,al_c,q_80,usm_0.66_1.00_0.01/942665_0df93f07b4c64809854f38f33b5ab6d0~mv2.png" alt="">
-
-                </figure> -->
             </div>
             <span class="ss-icon left" onclick="galleryspin('-')">&lt;</span>
             <span class="ss-icon right" onclick="galleryspin('')">&gt;</span>
