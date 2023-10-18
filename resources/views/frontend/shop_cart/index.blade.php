@@ -47,17 +47,13 @@
                                                     {{ $cart->quantity }}
                                                 </td>
                                                 <td>
-                                                    <span class="spot_price_usd"> ${{ number_format($cart->spot_price, 2) }}
+                                                    <span class="spot_price_usd">
+                                                        PKR{{ number_format($cart->spot_price, 2) }}
                                                     </span>
-                                                    <span class="spot_price_hkd" style="display: none">
-                                                        HKD {{ number_format($cart->spot_price * $hkd_price, 2) }}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="price_usd"> ${{ number_format($cart->total_price, 2) }}
+                                                    <span class="price_usd"> PKR{{ number_format($cart->total_price, 2) }}
                                                     </span>
-                                                    <span class="price_hkd" style="display: none">
-                                                        HKD {{ number_format($cart->total_price * $hkd_price, 2) }}</span>
-
                                                 </td>
                                                 <td>
                                                     <a class="delete-cart"
@@ -90,42 +86,6 @@
                         </div>
 
                         @if (count($carts) > 0)
-                            <div class="row">
-                                <div class="col-md-6">
-                                    {{-- <form action="#" class="form"> --}}
-                                    <div class="mb-10">
-                                        <label for="" class="font-alt">Delivery Method</label>
-                                        <select class="input-md form-control" name="delivery_method_id"
-                                            id="delivery_method_id" required style="display:flex">
-                                            <option value="" selected disabled>Select One</option>
-                                            @foreach ($delivery_methods as $delivery_method)
-                                                <option value="{{ $delivery_method->id }}"
-                                                    @if (old('delivery_method_id') == $delivery_method->id) {{ 'selected' }} @endif>
-                                                    {{ $delivery_method->delivery_method }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div id="delivery_description"></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-10">
-                                        <label for="" class="font-alt">Payment Method</label>
-                                        <select id="payment_method_id" name="payment_method_id"
-                                            class="input-md form-control" style="display:flex">
-                                            <option value="" selected disabled>Select One</option>
-                                            @foreach ($payment_methods as $payment_method)
-                                                <option value="{{ $payment_method->id }}"
-                                                    data-payment="{{ $payment_method->payment_method }}"
-                                                    @if (old('payment_method_id') == $payment_method->id) {{ 'selected' }} @endif>
-                                                    {{ $payment_method->payment_method }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div id="payment_description"></div>
-                                </div>
-                            </div>
                             <div class="row mb-10">
                                 {{-- </form> --}}
                                 <div class="col-md-12 pt-4 text-end">
@@ -133,9 +93,6 @@
                                         Order Total:
                                         <span id="total_price_usd"><strong>PKR
                                                 {{ number_format($total_price, 2) }}</strong></span>
-                                        <span id="total_price_hkd" style="display: none"><strong>HKD
-                                                {{ number_format($total_price * $hkd_price, 2) }}
-                                            </strong> <br><strong>PKR {{ number_format($total_price, 2) }}</strong></span>
                                     </div>
                                     <div>
                                         <div class="mb-10">
@@ -274,10 +231,6 @@
 
                 let currency = 'PKR';
 
-                if (method != 'credit card') {
-                    currency = 'HKD';
-                }
-
                 const url = $('#customer_products_store').attr('action');
                 $.ajax({
                     url: url,
@@ -286,9 +239,6 @@
                         "_token": "{{ csrf_token() }}",
                         cart_ids: arrp[0],
                         user_id: user_id,
-                        delivery_method_id: delivery_method_id,
-                        payment_method_id: payment_method_id,
-                        payment_method: method,
                         currency: currency,
                         created_at: moment().format('YYYY-MM-DD HH:mm:ss')
                     },

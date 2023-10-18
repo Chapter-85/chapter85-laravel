@@ -69,6 +69,7 @@ Route::get('/ez-gold', [HomeCtrl::class, 'ez_gold'])->name('ez-gold');
 Route::get('/mg-pay', [HomeCtrl::class, 'mg_pay'])->name('mg-pay');
 Route::get('verify-email/{code}', [CustomerController::class, 'verify_email'])->name('verify-email');
 Route::resources(['shop-cart' => ShopCartController::class]);
+Route::resources(['customer-products' => CustomerProductController::class]);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -76,7 +77,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resources(['agents' => AgentController::class]);
     Route::resources(['categories' => CatergoryController::class]);
     Route::resources(['products' => ProductController::class]);
-    Route::resources(['customer-products' => CustomerProductController::class]);
     Route::resources(['manufacturers' => ManufacturerController::class]);
     Route::resources(['customer-profile-data' => FrontendCustomerController::class]);
     Route::resources(['customer-shareholders' => CustomerShareholder::class]);
