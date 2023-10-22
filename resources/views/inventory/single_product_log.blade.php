@@ -67,7 +67,7 @@
                 <div class="card-body">
                     <form class="row  needs-validation" action="{{ route('inventories.store') }}" method="POST" novalidate>
                         @csrf
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-label-group in-border">
                                 <label for="user_id" class="form-label">Products</label>
                                 <input type="text"
@@ -79,7 +79,32 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-label-group in-border">
+                                <label for="product_size_id" class="form-label">Product Sizes</label>
+                                <select class="form-select form-control mb-3" name="product_size_id" required>
+                                    <option value="" @if (old('product_size_id') == '') {{ 'selected' }} @endif
+                                        selected disabled>
+                                        Select One
+                                    </option>
+                                    @foreach ($product_sizes as $product)
+                                        <option value="{{ $product->id }}"
+                                            @if (old('product_size_id') == $product->id) {{ 'selected' }} @endif>
+                                            {{ $product->size }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="invalid-tooltip">
+                                    @if ($errors->has('product_size_id'))
+                                        {{ $errors->first('product_size_id') }}
+                                    @else
+                                        Select the Category!
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
                             <div class="form-label-group in-border">
                                 <label for="user_id" class="form-label">Units</label>
                                 <input type="number"
@@ -91,7 +116,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <div class="form-label-group in-border">
                                 <label for="user_id" class="form-label">Added By</label>
                                 <input type="text"

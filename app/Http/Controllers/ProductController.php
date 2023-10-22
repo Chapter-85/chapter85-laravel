@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Catergory;
 use App\Models\Manufacturer;
 use App\Models\Product;
+use App\Models\ProductPictures;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DataTables;
 use File;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -22,7 +24,7 @@ class ProductController extends Controller
     {
         if ($request->ajax()) {
 
-            $data = Product::with('category')->latest('updated_at')->get();
+            $data = Product::with('category')->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('status_prd', function ($row) {
@@ -84,44 +86,34 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'sku' => 'required|string|max:255||unique:products,sku',
             'name' => 'required|string|max:255',
-            'product_picture' => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'product_picture.*' => 'required|file|mimes:jpg,jpeg,png|max:2048',
             'pricing_type' => 'required|string|max:255',
             'catergory_id' => 'required|integer',
             'description' => 'required'
         ]);
 
         $input = $request->all();
-        // $valid_from = null;
-        // $valid_to = null;
+        $product = Product::create($input);
+        if ($request->has('product_picture')) {
+            // dd('here');
+            $path = 'uploads/products';
+            File::ensureDirectoryExists($path);
 
-        // $validity = $request->input('validity', '');
+            foreach ($request->file('product_picture') as $key => $image) {
+                $file_name = time() . $key . '.' . $image->extension();
+                $image->move(public_path($path), $file_name);
+                ProductPictures::create([
+                    'product_id' => $product->id,
+                    'image' => $file_name
+                ]);
+                // $product->product_images()->create(['image' => $file_name]);
+            }
+        }
 
-        // if($validity !== ''){
-
-        //     $validity = explode('to', $validity);
-
-        //     if(count($validity) == 2){
-        //         $valid_from = trim($validity[0]);
-        //         $valid_to = trim($validity[1]);
-        //     }else{
-        //         $valid_from = trim($validity[0]);
-        //         $valid_to = trim($validity[0]);
-        //     }
-        // }
-
-        // $input['status'] = 'active';
-
-        $file_name = time() . '.' . $request->product_picture->extension();
-        $path = 'uploads/products';
-        File::ensureDirectoryExists($path);
-
-        $request->product_picture->move(public_path($path), $file_name);
-
-        $input['product_picture'] = $file_name;
-        Product::create($input);
 
         return redirect()->route('products.index')
             ->with('success', 'Product created successfully.');
@@ -149,7 +141,9 @@ class ProductController extends Controller
         // dd($product->getProductComission());
         $manufacturers = Manufacturer::all();
         $categories = Catergory::all();
-        return view('products.edit_product', ['product' => $product, 'categories' => $categories, 'manufacturers' => $manufacturers]);
+        $prod = Product::where('id', $product->id)->with('product_images')->first();
+        // dd($prod->toArray());
+        return view('products.edit_product', ['product' => $prod, 'categories' => $categories, 'manufacturers' => $manufacturers]);
     }
 
     /**
@@ -173,15 +167,24 @@ class ProductController extends Controller
         $input = $request->all();
         // dd($input);
 
-        if ($request->hasFile('product_picture')) {
-            // dd($input);
-            $file_name = time() . '.' . $request->product_picture->extension();
+        if ($request->has('product_picture')) {
             $path = 'uploads/products';
             File::ensureDirectoryExists($path);
 
-            $request->product_picture->move(public_path($path), $file_name);
+            foreach ($product->product_images as $image) {
+                Storage::delete($path . $image->file_name);
+                $image->delete();
+            }
 
-            $input['product_picture'] = $file_name;
+            foreach ($request->file('product_picture') as $key => $image) {
+                $file_name = time() . $key . '.' . $image->extension();
+                $image->move(public_path($path), $file_name);
+                ProductPictures::create([
+                    'product_id' => $product->id,
+                    'image' => $file_name
+                ]);
+                // $product->product_images()->create(['image' => $file_name]);
+            }
         }
         $product->update($input);
 

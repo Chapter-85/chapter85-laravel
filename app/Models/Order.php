@@ -12,6 +12,7 @@ class Order extends Model
 
     protected $fillable = [
         'customer_id',
+        'walk_in_customer_id',
         'total_order_price',
         'total_quantity',
         'delivery_method',
@@ -52,6 +53,11 @@ class Order extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
+    }
+
+    public function walk_in_customer()
+    {
+        return $this->belongsTo(WalkInCustomer::class, 'walk_in_customer_id', 'id');
     }
 
     public function product_commissions()

@@ -33,16 +33,12 @@ class ShopCartController extends Controller
         foreach ($cart as $key => $value) {
             $total_price = $value->total_price + $total_price;
         }
-        // $hkd_price = ExchangeRate::latest()->first();
-        $delivery_methods = Setup::all();
-        $payment_methods = PaymentMethod::all();
-        $now = Carbon::now();
         $cart_count = 0;
         if (!isset(\Auth::user()->id)) {
             $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
         }
         // dd($now);
-        return view('frontend.shop_cart.index', ['delivery_methods' => $delivery_methods, 'payment_methods' => $payment_methods, 'now' => $now, 'carts' => $cart, 'total_price' => $total_price, 'hkd_price' => 0, 'cart_count' => $cart_count]);
+        return view('frontend.shop_cart.index', ['carts' => $cart, 'total_price' => $total_price, 'cart_count' => $cart_count]);
     }
 
     /**
@@ -65,6 +61,7 @@ class ShopCartController extends Controller
     {
         $request->validate([
             'product_id' => ['required'],
+            'product_size_id' => ['required'],
             'spot_price' => ['required'],
             'quantity' => ['required'],
         ]);
@@ -75,18 +72,27 @@ class ShopCartController extends Controller
             $input['total_price'] = $request->quantity * $request->spot_price;
             if (!isset($request->user_id)) {
                 $input['session_id'] = $request->cookie('laravel_session');
-                $shoppingCart = ShopCart::where(['session_id' => $input['session_id'], 'status' => 'pending'])->first();
-                if (!$shoppingCart) {
-                    ShopCart::create($input);
-                } else {
-                    $shoppingCart->quantity = $shoppingCart->quantity + $request->quantity;
-                    $shoppingCart->total_price = $shoppingCart->quantity * $request->spot_price;
-                    $shoppingCart->save();
-                }
+                // $shoppingCart = ShopCart::where(['session_id' => $input['session_id'], 'status' => 'pending'])->first();
+                // if (!$shoppingCart) {
+                ShopCart::create($input);
+                // } else {
+                // $shoppingCart->quantity = $shoppingCart->quantity + $request->quantity;
+                // $shoppingCart->total_price = $shoppingCart->quantity * $request->spot_price;
+                // $shoppingCart->save();
+                // }
                 $shoppingCartItems = ShopCart::where(['session_id' => $input['session_id'], 'status' => 'pending'])->count();
                 return ['success' => 'Item Added to Cart Successfully', 'cart_count' => $shoppingCartItems];
             } else {
+                // $shoppingCart = ShopCart::where(['user_id' => $input['session_id'], 'status' => 'pending'])->first();
+                // if (!$shoppingCart) {
+                $input['user_id'] = \Auth::user()->id;
                 ShopCart::create($input);
+                // } else {
+                //     $shoppingCart->quantity = $shoppingCart->quantity + $request->quantity;
+                //     $shoppingCart->total_price = $shoppingCart->quantity * $request->spot_price;
+                //     $shoppingCart->save();
+                // }
+                // ShopCart::create($input);
                 return ['success' => 'Item Added to Cart Successfully', 'cart_count' => \Auth::user()->cart_count];
             }
         }

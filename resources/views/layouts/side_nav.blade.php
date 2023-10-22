@@ -83,6 +83,14 @@
 
                 <li class="nav-item">
                     <a class="nav-link menu-link
+                    {{ Request::is('product-sizes') || Request::is('product-sizes/*') ? 'active' : '' }}"
+                        href="{{ route('product-sizes.index') }}" role="button">
+                        <i class="ri-home-smile-line"></i> <span data-key="t-dashboards">Product Sizes</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link
                     {{ Request::is('delivery-charges') || Request::is('delivery-charges/*') ? 'active' : '' }}"
                         href="{{ route('delivery-charges.index') }}" role="button">
                         <i class="ri-home-smile-line"></i> <span data-key="t-dashboards">Delivery Charges</span>

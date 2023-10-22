@@ -13,6 +13,7 @@ class Inventory extends Model
     protected $fillable = [
         'product_id',
         'units',
+        'size',
         'order_id',
         'user_id',
         'remarks',
@@ -36,6 +37,11 @@ class Inventory extends Model
     public function order()
     {
         return $this->belongsTo(Order::class, 'order_id', 'id');
+    }
+
+    public function product_size()
+    {
+        return $this->belongsTo(ProductSizes::class, 'product_size_id', 'id');
     }
 
     public function user()
