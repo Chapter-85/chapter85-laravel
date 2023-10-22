@@ -19,7 +19,7 @@ class Product extends Model
         'name_s_ch',
         'name_t_ch',
         'abbreviation',
-        'product_picture',
+        // 'product_picture',
         'pricing_type',
         'fixed_amount',
         'promo_amount',
@@ -90,6 +90,11 @@ class Product extends Model
     public function order_products()
     {
         return $this->hasMany(OrderProduct::class);
+    }
+
+    public function product_images()
+    {
+        return $this->hasMany(ProductPictures::class);
     }
 
     public function inventories()

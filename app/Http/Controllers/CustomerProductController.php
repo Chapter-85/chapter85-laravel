@@ -33,7 +33,7 @@ class CustomerProductController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('purchase_price', function ($row) {
-                    return $row->purchase_price . ' USD';
+                    return 'PKR ' . $row->purchase_price;
                 })
                 // ->rawColumns()
                 ->make(true);
@@ -59,33 +59,28 @@ class CustomerProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $request->validate([
             'cart_ids' => ['required'],
             'user_id' => ['required'],
-            // 'payment_method_id' => ['required'],
-            // 'delivery_method_id' => ['required'],
             'currency' => ['required'],
         ]);
 
-        $user = User::find($request->user_id);
-        $customer = Customer::where('user_id', $request->user_id)->first();
+        // $user = User::find($request->user_id);
+        // $customer = Customer::where('user_id', $request->user_id)->first();
 
-        $order = Order::create([
-            'customer_id' => $customer->id,
-            // 'delivery_method_id' => $request->delivery_method_id,
-            // 'payment_method_id' => $request->payment_method_id,
-            'payment_status' => 'UNPAID',
-            'order_status' => 'PENDING',
-            'delivery_status' => 'PENDING',
-            'currency' => $request->currency,
-            'created_at' => $request->created_at
-        ]);
+        // $order = Order::create([
+        //     'customer_id' => $customer->id,
+        //     'payment_status' => 'UNPAID',
+        //     'order_status' => 'PENDING',
+        //     'delivery_status' => 'PENDING',
+        //     'currency' => $request->currency,
+        //     'created_at' => $request->created_at
+        // ]);
 
-        Notification::send($user, new OrderCreated());
+        // Notification::send($user, new OrderCreated());
 
         // dd($order);
-        return ['url' => route('order-delivery-details', $order->id)];
+        return ['url' => route('order-delivery-details')];
     }
 
     /**

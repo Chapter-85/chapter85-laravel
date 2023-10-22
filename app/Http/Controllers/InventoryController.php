@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use App\Models\Product;
+use App\Models\ProductSizes;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Database\QueryException;
@@ -134,10 +135,11 @@ class InventoryController extends Controller
     {
         $product_id = $id;
         $product = Product::find($product_id);
+        $product_size = ProductSizes::where('product_id', $product_id)->with('product')->get();
         $total_units = Inventory::where('product_id', $product_id)->sum('units');
         $inventories = Inventory::with(['product', 'order.customer'])->where('product_id', $product_id)->latest()->get();
         // dd($inventories->toArray());
-        return view('inventory.single_product_log', ['inventories' => $inventories, 'product' => $product, 'total_units' => $total_units]);
+        return view('inventory.single_product_log', ['inventories' => $inventories, 'product_sizes' => $product_size, 'product' => $product, 'total_units' => $total_units]);
     }
 
     private function get_similar_products()

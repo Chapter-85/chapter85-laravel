@@ -19,10 +19,12 @@ use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductCommissionController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductSizeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\ShopCartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WalkInCustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,10 +72,14 @@ Route::get('/mg-pay', [HomeCtrl::class, 'mg_pay'])->name('mg-pay');
 Route::get('verify-email/{code}', [CustomerController::class, 'verify_email'])->name('verify-email');
 Route::resources(['shop-cart' => ShopCartController::class]);
 Route::resources(['customer-products' => CustomerProductController::class]);
+Route::get('/order-delivery-details', [OrderController::class, 'order_delivery_details'])->name('order-delivery-details');
+Route::resources(['walk-in-customer' => WalkInCustomerController::class]);
+Route::resources(['orders' => OrderController::class]);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::resources(['/customers' => CustomerController::class]);
+    Route::resources(['/product-sizes' => ProductSizeController::class]);
     Route::resources(['agents' => AgentController::class]);
     Route::resources(['categories' => CatergoryController::class]);
     Route::resources(['products' => ProductController::class]);
@@ -82,7 +88,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resources(['customer-shareholders' => CustomerShareholder::class]);
     Route::resources(['customer-trading' => CustomerTrading::class]);
     Route::resources(['product-commission' => ProductCommissionController::class]);
-    Route::resources(['orders' => OrderController::class]);
     Route::resources(['inventories' => InventoryController::class]);
     Route::resources(['delivery-charges' => DeliveryChargesController::class]);
     Route::resources(['exchange-rate' => ExchangeRateController::class]);
@@ -102,7 +107,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('load-trading', [CustomerTrading::class, 'load_trading'])->name('load-trading');
     Route::get('load-single-product-logs/{id}', [InventoryController::class, 'load_single_product_logs'])->name('load-single-product-logs');
     Route::get('/order-details/{id}', [OrderController::class, 'order_details'])->name('order-details');
-    Route::get('/order-delivery-details/{id}', [OrderController::class, 'order_delivery_details'])->name('order-delivery-details');
 
     Route::post('/applicant-info-individual', [HomeCtrl::class, 'applicant_information_individual'])->name('applicant-info-individual');
     Route::post('/applicant-info-corporate', [HomeCtrl::class, 'applicant_information_corporate'])->name('applicant-info-corporate');

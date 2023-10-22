@@ -121,27 +121,6 @@
 
                         <div class="col-md-4 col-sm-12">
                             <div class="form-label-group in-border">
-                                <label for="product_picture" class="form-label">Product Picture</label>
-                                <input type="file"
-                                    class="form-control @if ($errors->has('product_picture')) is-invalid @endif"
-                                    id="product_picture" name="product_picture" placeholder="Please Enter Account Name"
-                                    value="{{ $product->product_picture }}">
-                                <div class="invalid-tooltip">
-                                    @if ($errors->has('product_picture'))
-                                        {{ $errors->first('product_picture') }}
-                                    @else
-                                        Product Picture is required!
-                                    @endif
-                                </div>
-                                <small class="text-muted form-text m-b-none text-right"><a data-bs-toggle="modal"
-                                        data-bs-target="#domicile-modal" href="" title="Domicile" data-gallery=""><i
-                                            class="ri-picture-in-picture-exit-fill"></i> Preview Product
-                                        Picture</a></small>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-12">
-                            <div class="form-label-group in-border">
                                 <label for="status" class="form-label">Status</label>
                                 <select id="" class="form-select form-control mb-3" name="status">
                                     <option value="" @if ($product->status == '') {{ 'selected' }} @endif
@@ -183,7 +162,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-label-group in-border">
                                 <label for="valid_from" class="form-label">Valid From </label>
                                 <input type="date" name="valid_from" id="valid_from"
@@ -199,7 +178,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-label-group in-border">
                                 <label for="status" class="form-label">Valid Till </label>
                                 <input type="date" name="valid_till" value="{{ $product->valid_till }}"
@@ -211,6 +190,27 @@
                                         Valid till is required!
                                     @endif
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 mb-3">
+                            <div class="form-label-group in-border">
+                                <label for="product_picture" class="form-label">Product Picture</label>
+                                <input type="file"
+                                    class="form-control @if ($errors->has('product_picture')) is-invalid @endif"
+                                    id="product_picture" multiple="multiple" name="product_picture[]"
+                                    placeholder="Please Enter Account Name" value="{{ $product->product_picture }}">
+                                <div class="invalid-tooltip">
+                                    @if ($errors->has('product_picture'))
+                                        {{ $errors->first('product_picture') }}
+                                    @else
+                                        Product Picture is required!
+                                    @endif
+                                </div>
+                                {{-- <small class="text-muted form-text m-b-none text-right"><a data-bs-toggle="modal"
+                                        data-bs-target="#domicile-modal" href="" title="Domicile" data-gallery=""><i
+                                            class="ri-picture-in-picture-exit-fill"></i> Preview Product
+                                        Picture</a></small> --}}
                             </div>
                         </div>
 
@@ -228,6 +228,20 @@
                                 class="btn btn-light bg-gradient waves-effect waves-light">Cancel</a>
                         </div>
                     </form>
+                    <div class="row">
+                        <div class="card-header align-items-center d-flex">
+                            <h4 class="card-title mb-0 flex-grow-1">Product Images</h4>
+
+                        </div>
+                        @forelse ($product->product_images as $images)
+                            <div class="col-md-4">
+                                <!-- Thumbnails Images -->
+                                <img class="img-thumbnail" alt="200x200" width="600"
+                                    src="{{ $images->product_picture_url }}">
+                            </div>
+                        @empty
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </div>

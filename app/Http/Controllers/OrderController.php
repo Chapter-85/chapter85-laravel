@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Inventory;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\PaymentMethod;
@@ -13,6 +14,9 @@ use App\Notifications\PaymentRecevied;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\Notification;
+use App\Models\ShopCart;
+use App\Models\WalkInCustomer;
+use App\Notifications\OrderCreated;
 
 class OrderController extends Controller
 {
@@ -57,7 +61,64 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = \Auth::user();
+        if (!isset($user)) {
+            $customer = WalkInCustomer::where(['session_id' => $request->cookie('laravel_session')])->first();
+            $input = $request->all();
+            $input['walk_in_customer_id'] = $customer->id;
+            $input['payment_status'] = 'UNPAID';
+            $input['order_status'] = 'In Progress';
+            $input['delivery_status'] = 'PENDING';
+            $input['currency'] = 'PKR';
+            $order = Order::create($input);
+            $carts = ShopCart::where('session_id', $request->cookie('laravel_session'))->get();
+            foreach ($carts as $cart) {
+                OrderProduct::create([
+                    'order_id' => $order->id,
+                    'product_id' => $cart->product_id,
+                    'spot_price' => $cart->spot_price,
+                    'quantity' => $cart->quantity,
+                    'total_price' => $cart->total_price,
+                ]);
+
+                Inventory::create([
+                    'product_id' => $cart->product_id,
+                    'product_size_id' => $cart->product_size_id,
+                    'order_id' => $order->id,
+                    'units' => -1 * abs($cart->quantity)
+                ]);
+            }
+            ShopCart::where('session_id', $request->cookie('laravel_session'))->update(['status' => 'COMPLETED']);
+            Notification::send($customer, new OrderCreated());
+        } else {
+            $customer = Customer::where(['user_id' => $user->id])->first();
+            $input = $request->all();
+            $input['customer_id'] = $customer->id;
+            $input['payment_status'] = 'UNPAID';
+            $input['order_status'] = 'In Progress';
+            $input['delivery_status'] = 'PENDING';
+            $input['currency'] = 'PKR';
+            $order = Order::create($input);
+            $carts = ShopCart::where('user_id', $user->id)->get();
+            foreach ($carts as $cart) {
+                OrderProduct::create([
+                    'order_id' => $order->id,
+                    'product_id' => $cart->product_id,
+                    'spot_price' => $cart->spot_price,
+                    'quantity' => $cart->quantity,
+                    'total_price' => $cart->total_price,
+                ]);
+                Inventory::create([
+                    'product_id' => $cart->product_id,
+                    'product_size_id' => $cart->product_size_id,
+                    'order_id' => $order->id,
+                    'units' => -1 * abs($cart->quantity)
+                ]);
+            }
+            ShopCart::where('user_id', $user->id)->update(['status' => 'COMPLETED']);
+            Notification::send($user, new OrderCreated());
+        }
+        return ['url' => route('home')];
     }
 
     /**
@@ -135,14 +196,27 @@ class OrderController extends Controller
         return view('orders.order_details', ['order' => $order, 'total_price' => $total_price]);
     }
 
-    public function order_delivery_details($id)
+    public function order_delivery_details(Request $request)
     {
-        $order = Order::where('id', $id)->with(['customer.user'])->first();
-        // dd($order->toArray());
-        if ($order) {
-            return view('frontend.shop_cart.delievery_method', ['order' => $order]);
+
+        $user = \Auth::user();
+        if (!isset($user)) {
+            $cart = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->get();
+            $customer = WalkInCustomer::where(['session_id' => $request->cookie('laravel_session')])->first();
+        } else {
+            $cart = ShopCart::where(['user_id' => $user->id, 'status' => 'pending'])->get();
+            $customer = Customer::where(['user_id' => $user->id])->with('user')->first();
         }
-        return back()->with('error', 'No Order Found');
+
+        $total_price = 0;
+        foreach ($cart as $key => $value) {
+            $total_price = $value->total_price + $total_price;
+        }
+        $cart_count = 0;
+        if (!isset(\Auth::user()->id)) {
+            $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
+        }
+        return view('frontend.shop_cart.delievery_method', ['customer' => $customer, 'carts' => $cart, 'cart_count' => $cart_count, 'total_price' => $total_price, 'currentStep' => 1]);
     }
 
     public function customer_order_details($id)

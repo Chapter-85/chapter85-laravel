@@ -82,7 +82,7 @@
                                 <select id="pricing_type" class="form-select form-control mb-3" name="pricing_type"
                                     required>
                                     <option value="fix_price" selected>
-                                        Fix Price (定價)
+                                        Fix Price
                                     </option>
                                 </select>
                                 <div class="invalid-tooltip">
@@ -117,22 +117,6 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-12 mb-3">
-                            <div class="form-label-group in-border">
-                                <label for="product_picture" class="form-label">Product Picture </label>
-                                <input type="file"
-                                    class="form-control @if ($errors->has('product_picture')) is-invalid @endif"
-                                    id="product_picture" name="product_picture" placeholder="Please Enter Account Name"
-                                    value="{{ old('product_picture') }}" required>
-                                <div class="invalid-tooltip">
-                                    @if ($errors->has('product_picture'))
-                                        {{ $errors->first('product_picture') }}
-                                    @else
-                                        Product Picture is required!
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="col-md-4 col-sm-12">
                             <div class="form-label-group in-border">
@@ -175,7 +159,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-label-group in-border">
                                 <label for="valid_from" class="form-label">Valid From </label>
                                 <input type="date" name="valid_from" id="valid_from" value="{{ old('valid_from') }}"
@@ -190,7 +174,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-label-group in-border">
                                 <label for="valid_till" class="form-label">Valid Till </label>
                                 <input type="date" name="valid_till" id="valid_till" value="{{ old('valid_till') }}"
@@ -204,6 +188,25 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="col-md-12 col-sm-12 mb-3">
+                            <div class="form-label-group in-border">
+                                <label for="product_picture" class="form-label">Product Picture </label>
+                                <input type="file"
+                                    class="form-control @if ($errors->has('product_picture')) is-invalid @endif"
+                                    id="product_picture" name="product_picture[]" placeholder="Please Enter Account Name"
+                                    value="{{ old('product_picture') }}" multiple="multiple" required>
+                                <div class="invalid-tooltip">
+                                    @if ($errors->has('product_picture'))
+                                        {{ $errors->first('product_picture') }}
+                                    @else
+                                        Product Picture is required!
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="col-md-12 col-sm-12">
                             <div class="form-label-group in-border">
