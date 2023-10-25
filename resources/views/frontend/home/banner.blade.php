@@ -41,7 +41,7 @@
                                   class="sr-only">{{ 'home_page.scroll_to_the_next_section' }}</span></a>
                       </div>
                   </div>
-                  <img src="{{ asset('frontend/images/head.jpg') }}" class="d-block w-100" alt="...">
+                  <img src="{{ asset('frontend/images/header/1.jpg') }}" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
                   <div class="js-height-full">
@@ -62,7 +62,7 @@
                                   class="sr-only">{{ 'home_page.scroll_to_the_next_section' }}</span></a>
                       </div>
                   </div>
-                  <img src="{{ asset('frontend/images/head.jpg') }}" class="d-block w-100" alt="...">
+                  <img src="{{ asset('frontend/images/header/2.jpg') }}" class="d-block w-100" alt="...">
               </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"

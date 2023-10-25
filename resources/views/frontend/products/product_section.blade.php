@@ -1,8 +1,8 @@
 <div class="col-sm-12 col-md-3 col-lg-3 mb-60 mb-xs-40">
 
     <div class="post-prev-img boxed w-100">
-        <a href="{{ route('single-product', $product->id) }}"><img src="{{ $product->product_picture_url }}"
-                alt=""></a>
+        <a href="{{ route('single-product', $product->id) }}"><img
+                src="{{ $product->product_images[0]->product_picture_url }}" alt=""></a>
         <a href="{{ route('single-product', $product->id) }}" class="quick-view"> {{ __('home_page.quick_view') }}</a>
     </div>
     <div class="post-prev-title font-alt align-center">

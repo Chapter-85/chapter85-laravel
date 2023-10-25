@@ -1,5 +1,5 @@
 <section class="small-section bg-dark-alfa-20 page-header-global" style=""
-    data-background="{{ asset('frontend/images/about-bg.png') }}">
+    data-background="{{ asset('frontend/images/header/5.jpg') }}">
     <div class="relative container align-left">
 
         <div class="row">
