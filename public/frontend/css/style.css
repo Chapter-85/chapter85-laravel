@@ -5973,7 +5973,7 @@ section:hover .small-item-carousel .owl-next {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     display: inline-block;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 .intro-label .badge{
     background-color: rgb(18, 48, 51)  !important;
@@ -8531,7 +8531,10 @@ box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.1);
 .step:last-child:before {
     content: none; /* Remove connectors for the first and last steps */
 }
-
+.full-width{
+    width: 100%;
+    max-width: 380px;
+}
   .custom-checkbox-cover {
         display: flex;
         flex-wrap: wrap;

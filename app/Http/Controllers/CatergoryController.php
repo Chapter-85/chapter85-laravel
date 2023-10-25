@@ -53,7 +53,7 @@ class CatergoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'picture' => 'required|file|mimes:jpg,jpeg,png|max:2048'
+            'picture' => 'required|file|mimes:jpg,jpeg,png'
         ]);
         $input = $request->all();
 
