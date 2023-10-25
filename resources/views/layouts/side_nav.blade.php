@@ -3,20 +3,20 @@
         <!-- Dark Logo-->
         <a href="{{ route('home') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('frontend/images/logo-gold.png') }}" alt="" height="22">
+                <img src="{{ asset('frontend/images/Chapter 85-02.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('frontend/images/logo-gold.png') }}" alt=""
+                <img src="{{ asset('frontend/images/Chapter 85-02.png') }}" alt=""
                     style="max-height: 100%; height: auto; width: 180px;">
             </span>
         </a>
         <!-- Light Logo-->
         <a href="{{ route('home') }}" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('frontend/images/logo-white.png') }}" alt="" height="22">
+                <img src="{{ asset('frontend/images/Chapter 85-03-white.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('frontend/images/logo-white.png') }}" alt=""
+                <img src="{{ asset('frontend/images/Chapter 85-03-white.png') }}" alt=""
                     style="max-height: 100%; height: auto; width: 180px;">
             </span>
         </a>

@@ -20,11 +20,27 @@
             <div class="row mb-60 mb-xs-30 product-card-main">
 
                 <div class="col-md-4 mb-md-30">
-                    <div class="post-prev-img">
+                    <div class="slider-for">
+                        <div><img src="{{ $product->product_images[0]->product_picture_url }}" alt="Image 1"></div>
+                        <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Image 2"></div>
+                        <!-- ... Add more main images as needed ... -->
+
+                    </div>
+                    <div class="slider-nav">
+                        <div><img src="{{ $product->product_images[0]->product_picture_url }}" alt="Thumbnail 1"></div>
+                        <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Thumbnail 2"></div>
+                        <!-- ... Add more thumbnails as needed ... -->
+                    </div>
+                    {{-- <div class="slick-slider">
+                        <div><img src="{{ $product->product_images[0]->product_picture_url }}" alt="Image 1"></div>
+                        <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Image 2"></div>
+                        <!-- ... Add more slides as needed ... -->
+                    </div> --}}
+                    {{-- <div class="post-prev-img">
                         <a href="{{ $product->product_picture_url }}" class="lightbox-gallery-3 mfp-image"><img
                                 src="{{ $product->product_picture_url }}" alt="" /></a>
 
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="col-sm-12 col-md-8 mb-xs-20">
@@ -63,6 +79,28 @@
                         <form method="post" action="{{ route('shop-cart.store') }}" class="form" id="shor_cart_form">
                             {{-- <form method="post" action="{{ route('customer-products.store') }}" class="form"> --}}
                             @csrf
+                            <div class="custom-checkbox-cover mb-20">
+                                <div class="custom-checkbox">
+                                    <label>
+                                        <input type="radio" value="1" />
+                                        <span>XL</span>
+                                    </label>
+                                </div>
+
+                                <div class="custom-checkbox">
+                                    <label>
+                                        <input type="radio" value="1" />
+                                        <span>L</span>
+                                    </label>
+                                </div>
+
+                                <div class="custom-checkbox">
+                                    <label>
+                                        <input type="radio" value="1" />
+                                        <span>M</span>
+                                    </label>
+                                </div>
+                            </div>
                             <input name="quantity" id="quantity" type="number" class="input-lg round" min="1"
                                 max="5" value="1" />
                             @if (isset(\Auth::user()->id))
@@ -88,8 +126,8 @@
         </div>
     </section>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -139,6 +177,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
     <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            $('.slider-for').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                asNavFor: '.slider-nav'
+            });
+
+            $('.slider-nav').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                asNavFor: '.slider-for',
+                dots: true,
+                centerMode: true,
+                focusOnSelect: true
+            });
+        });
         $(document).ready(function() {
 
             $('.use_feed_btn').on('click', function(e) {

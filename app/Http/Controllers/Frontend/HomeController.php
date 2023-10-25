@@ -46,8 +46,8 @@ class HomeController extends Controller
 
     public function shop(Request $request)
     {
-        $_products = Product::with('category')->where(['status' => 'active']);
-
+        $_products = Product::with(['category', 'product_images'])->where(['status' => 'active']);
+        // dd($_products);
         if ($request->has('category')) {
             $_products = $_products->where(['catergory_id' => $request->category, 'status' => 'active']);
         }
@@ -64,10 +64,10 @@ class HomeController extends Controller
             $_products = $_products->paginate(12);
         }
 
-        // dd($_products->get());
-
+        // dd($_products->toArray());
 
         $products = $_products;
+
 
         $categories = Catergory::whereNull('parent_id')->with(['children'])->get();
         $manufacturers = Manufacturer::all();
