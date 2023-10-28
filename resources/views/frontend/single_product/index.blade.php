@@ -19,32 +19,45 @@
 
             <div class="row mb-60 mb-xs-30 product-card-main">
 
-                <div class="col-md-4 mb-md-30">
+                <div class="col-md-6 mb-md-30">
                     <div class="slider-for">
-                        <div><img src="{{ $product->product_images[0]->product_picture_url }}" alt="Image 1"></div>
-                        <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Image 2"></div>
-                        <!-- ... Add more main images as needed ... -->
+                        @forelse ($product->product_images as $image)
+                            <div><img src="{{ $image->product_picture_url }}" alt="Image 1"></div>
+                        @empty
+                            <div class="post-prev-img">
+                                <a href="{{ $product->product_picture_url }}" class="lightbox-gallery-3 mfp-image"><img
+                                        src="{{ $product->product_picture_url }}" alt="" /></a>
+                            </div>
+                        @endforelse
 
                     </div>
-                    <div class="slider-nav">
-                        <div><img src="{{ $product->product_images[0]->product_picture_url }}" alt="Thumbnail 1"></div>
-                        <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Thumbnail 2"></div>
-                        <!-- ... Add more thumbnails as needed ... -->
-                    </div>
-                    {{-- <div class="slick-slider">
-                        <div><img src="{{ $product->product_images[0]->product_picture_url }}" alt="Image 1"></div>
-                        <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Image 2"></div>
-                        <!-- ... Add more slides as needed ... -->
-                    </div> --}}
-                    {{-- <div class="post-prev-img">
-                        <a href="{{ $product->product_picture_url }}" class="lightbox-gallery-3 mfp-image"><img
-                                src="{{ $product->product_picture_url }}" alt="" /></a>
+                    <div class="slider-nav mt-10">
+                        @forelse ($product->product_images as $image)
+                            <div><img src="{{ $image->product_picture_url }}" alt="Thumbnail 1"></div>
+                        @empty
+                            <div class="post-prev-img">
+                                <a href="{{ $product->product_picture_url }}" class="lightbox-gallery-3 mfp-image"><img
+                                        src="{{ $product->product_picture_url }}" alt="" /></a>
+                            </div>
+                        @endforelse
 
-                    </div> --}}
+                    </div>
                 </div>
 
-                <div class="col-sm-12 col-md-8 mb-xs-20">
-                    <h3 class="mt-0">{{ $product->name }} </h3>
+                <div class="col-sm-12 col-md-6 mb-xs-20">
+                    <h3 class="mt-0 mb-10">{{ $product->name }} </h3>
+                    <div class="section-text small">
+                        <div>SKU: {{ $product->sku }}</div>
+                        <div>{{ __('home_page.Category') }}:
+                            <a href="{{ route('shop', ['category' => $product->category->id]) }}">
+                                {{ $product->category->name }}</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 lead mt-10 mb-20">
+                            <strong>{{ $product->getProductPrice() }}</strong>
+                        </div>
+                    </div>
                     @if ($product->productsQuantity() != null)
                         <div class="intro-label">
                             <span class="badge badge-primary bg-green">In Stock</span>
@@ -55,51 +68,22 @@
                         </div>
                     @endif
 
-                    <p class="mt-0">
-                        {{ $product->description }}
-                    </p>
-
-                    <hr class="mt-0 mb-30" />
-                    <div class="row">
-                        <div class="col-6 lead mt-0 mb-20">
-                            <strong>{{ $product->getProductPrice() }}</strong>
-                        </div>
-                    </div>
-
-                    <div class="section-text small">
-                        <div>SKU: {{ $product->sku }}</div>
-                        <div>{{ __('home_page.Category') }}:
-                            <a href="{{ route('shop', ['category' => $product->category->id]) }}">
-                                {{ $product->category->name }}</a>
-                        </div>
-                    </div>
-
                     <div class="mb-30 mt-20 btns">
                         <hr class="mt-0 mb-30" />
                         <form method="post" action="{{ route('shop-cart.store') }}" class="form" id="shor_cart_form">
                             {{-- <form method="post" action="{{ route('customer-products.store') }}" class="form"> --}}
                             @csrf
                             <div class="custom-checkbox-cover mb-20">
-                                <div class="custom-checkbox">
-                                    <label>
-                                        <input type="radio" value="1" />
-                                        <span>XL</span>
-                                    </label>
-                                </div>
-
-                                <div class="custom-checkbox">
-                                    <label>
-                                        <input type="radio" value="1" />
-                                        <span>L</span>
-                                    </label>
-                                </div>
-
-                                <div class="custom-checkbox">
-                                    <label>
-                                        <input type="radio" value="1" />
-                                        <span>M</span>
-                                    </label>
-                                </div>
+                                @forelse ($product->product_sizes as $size)
+                                    <div class="custom-checkbox">
+                                        <label>
+                                            <input type="radio" name="product_size" value="{{ $size->id }}"
+                                                @if ($size->product_quantity() == null) disabled @endif />
+                                            <span>{{ $size->size }}</span>
+                                        </label>
+                                    </div>
+                                @empty
+                                @endforelse
                             </div>
                             <input name="quantity" id="quantity" type="number" class="input-lg round" min="1"
                                 max="5" value="1" />
@@ -115,19 +99,25 @@
                                 name="spot_price" hidden>
 
                             <button type="submit"
-                                class="btn btn-mod btn-large btn-round">{{ __('home_page.ad_to_cart') }}</button>
-
-                            <a href="{{ route('shop') }}" class="btn-mod btn-large btn-round"
-                                style="background:rgb(234 163 0) !important;color:#333 !important;margin-left:15px; margin-top:10px">{{ __('home_page.cont_shop') }}</a>
+                                class="btn btn-mod btn-large btn-round full-width">{{ __('home_page.ad_to_cart') }}</button>
                         </form>
                     </div>
+                    <p class="mt-0">
+                        {{ $product->description }}
+                    </p>
+
+                    <hr class="mt-0 mb-30" />
+
+
+
+
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -187,7 +177,7 @@
             });
 
             $('.slider-nav').slick({
-                slidesToShow: 3,
+                slidesToShow: 5,
                 slidesToScroll: 1,
                 asNavFor: '.slider-for',
                 dots: true,

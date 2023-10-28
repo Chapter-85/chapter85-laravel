@@ -40,7 +40,8 @@ class HomeController extends Controller
         // dd($products);
         return view('frontend.home.index', [
             'products' => $products,
-            'cart_count' => $cart_count
+            'cart_count' => $cart_count,
+            'slider_products' => $_products->get(),
         ]);
     }
 

@@ -30,9 +30,9 @@
                                     <td>{{ $order->delivery_status }}</td>
 
                                     @if ($order->total_price == null)
-                                        <td>PKR 0 </td>
+                                        <td>Rs 0 </td>
                                     @else
-                                        <td>PKR {{ number_format($order->total_price, 2) }} </td>
+                                        <td>Rs {{ number_format($order->total_price, 2) }} </td>
                                     @endif
                                     <td><a href="{{ route('get-customer-order-details', $order->id) }}"
                                             class="btn btn-sm btn-icon waves-effect waves-light">

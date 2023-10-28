@@ -97,6 +97,11 @@ class Product extends Model
         return $this->hasMany(ProductPictures::class);
     }
 
+    public function product_sizes()
+    {
+        return $this->hasMany(ProductSizes::class);
+    }
+
     public function inventories()
     {
         return $this->hasMany(Inventory::class);
@@ -221,7 +226,7 @@ class Product extends Model
         // return 'N/A';
 
         if ($type == 'str') {
-            return  'PKR ' . number_format($final_price, 2);
+            return  'Rs ' . number_format($final_price);
         }
 
         return $final_price;

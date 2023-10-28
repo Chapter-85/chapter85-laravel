@@ -90,7 +90,7 @@ class ProductController extends Controller
         $request->validate([
             'sku' => 'required|string|max:255||unique:products,sku',
             'name' => 'required|string|max:255',
-            'product_picture.*' => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'product_picture.*' => 'required|file|mimes:jpg,jpeg,png',
             'pricing_type' => 'required|string|max:255',
             'catergory_id' => 'required|integer',
             'description' => 'required'
