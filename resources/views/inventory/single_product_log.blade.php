@@ -53,7 +53,7 @@
                                     <td>{{ $product->on_hold }} </td>
                                     {{-- <td>{{ $product->mark_up }}</td> --}}
                                     {{-- <td class="fw-medium text-end">
-                                        {{ $product->getProductPrice() }} PKR
+                                        {{ $product->getProductPrice() }} Rs
                                     </td> --}}
                                 </tr>
                             </tbody>
@@ -188,7 +188,7 @@
                                         <td><span class="badge bg-warning">Sold</span></td>
                                         <td>{{ $inventories->order->id }}</td>
                                         <td>{{ $inventories->order->customer->full_name }}</td>
-                                        <td>{{ $inventories->order->spot_price }} PKR</td>
+                                        <td>{{ $inventories->order->spot_price }} Rs</td>
                                     @else
                                         <td><span class="badge bg-success">Added</span></td>
                                         <td>N /A</td>

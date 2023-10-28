@@ -21,6 +21,7 @@
 
                 <div class="col-md-6 mb-md-30">
                     <div class="slider-for">
+<<<<<<< HEAD
                         @forelse ($product->product_images as $image)
                             <div><img src="{{ $image->product_picture_url }}" alt="Image 1"></div>
                         @empty
@@ -59,6 +60,25 @@
                         </div>
                     </div>
                     @if ($product->productsQuantity() != null)
+=======
+                        @foreach ($product->product_images as $images)
+                            <div><img src="{{ $images->product_picture_url }}" alt="Image 1"></div>
+                        @endforeach
+                        {{-- <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Image 2"></div> --}}
+                        <!-- ... Add more main images as needed ... -->
+
+                    </div>
+                    <div class="slider-nav">
+                        @foreach ($product->product_images as $images)
+                            <div><img src="{{ $images->product_picture_url }}" alt="Image 1"></div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-8 mb-xs-20">
+                    <h3 class="mt-0">{{ $product->name }} </h3>
+                    {{-- @if ($product->productsQuantity() != null)
+>>>>>>> 8d161e2 (changes)
                         <div class="intro-label">
                             <span class="badge badge-primary bg-green">In Stock</span>
                         </div>
@@ -66,7 +86,7 @@
                         <div class="intro-label">
                             <span class="badge badge-danger bg-red">NOT AVAILABLE</span>
                         </div>
-                    @endif
+                    @endif --}}
 
                     <div class="mb-30 mt-20 btns">
                         <hr class="mt-0 mb-30" />
@@ -74,26 +94,16 @@
                             {{-- <form method="post" action="{{ route('customer-products.store') }}" class="form"> --}}
                             @csrf
                             <div class="custom-checkbox-cover mb-20">
-                                <div class="custom-checkbox">
-                                    <label>
-                                        <input type="radio" value="1" />
-                                        <span>XL</span>
-                                    </label>
-                                </div>
-
-                                <div class="custom-checkbox">
-                                    <label>
-                                        <input type="radio" value="1" />
-                                        <span>L</span>
-                                    </label>
-                                </div>
-
-                                <div class="custom-checkbox">
-                                    <label>
-                                        <input type="radio" value="1" />
-                                        <span>M</span>
-                                    </label>
-                                </div>
+                                @forelse ($product->product_sizes as $size)
+                                    <div class="custom-checkbox">
+                                        <label>
+                                            <input type="radio" name="product_size" value="{{ $size->id }}"
+                                                @if ($size->product_quantity() == null) disabled @endif />
+                                            <span>{{ $size->size }}</span>
+                                        </label>
+                                    </div>
+                                @empty
+                                @endforelse
                             </div>
                             <input name="quantity" id="quantity" type="number" class="input-lg round" min="1"
                                 max="5" value="1" />
@@ -126,8 +136,8 @@
         </div>
     </section>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -187,7 +197,7 @@
             });
 
             $('.slider-nav').slick({
-                slidesToShow: 3,
+                slidesToShow: 5,
                 slidesToScroll: 1,
                 asNavFor: '.slider-for',
                 dots: true,

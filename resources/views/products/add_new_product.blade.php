@@ -100,7 +100,7 @@
                                 <label for="fixed_amount" class="form-label">Fixed Amount</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">PKR</span>
+                                        <span class="input-group-text" id="basic-addon1">Rs</span>
                                     </div>
                                     <input type="decimal" step="0.001"
                                         class="form-control @if ($errors->has('fixed_amount')) is-invalid @endif"
