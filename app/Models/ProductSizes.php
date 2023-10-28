@@ -30,4 +30,14 @@ class ProductSizes extends Model
     {
         return $this->hasMany(Inventory::class);
     }
+
+    public function product_quantity()
+    {
+        $inventory = Inventory::where('product_size_id', $this->id)->sum('units');
+        if ($inventory > 0) {
+            // dd($inventory);
+            return $inventory;
+        }
+        return null;
+    }
 }

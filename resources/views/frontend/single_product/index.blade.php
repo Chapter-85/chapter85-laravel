@@ -21,31 +21,23 @@
 
                 <div class="col-md-4 mb-md-30">
                     <div class="slider-for">
-                        <div><img src="{{ $product->product_images[0]->product_picture_url }}" alt="Image 1"></div>
-                        <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Image 2"></div>
+                        @foreach ($product->product_images as $images)
+                            <div><img src="{{ $images->product_picture_url }}" alt="Image 1"></div>
+                        @endforeach
+                        {{-- <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Image 2"></div> --}}
                         <!-- ... Add more main images as needed ... -->
 
                     </div>
                     <div class="slider-nav">
-                        <div><img src="{{ $product->product_images[0]->product_picture_url }}" alt="Thumbnail 1"></div>
-                        <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Thumbnail 2"></div>
-                        <!-- ... Add more thumbnails as needed ... -->
+                        @foreach ($product->product_images as $images)
+                            <div><img src="{{ $images->product_picture_url }}" alt="Image 1"></div>
+                        @endforeach
                     </div>
-                    {{-- <div class="slick-slider">
-                        <div><img src="{{ $product->product_images[0]->product_picture_url }}" alt="Image 1"></div>
-                        <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Image 2"></div>
-                        <!-- ... Add more slides as needed ... -->
-                    </div> --}}
-                    {{-- <div class="post-prev-img">
-                        <a href="{{ $product->product_picture_url }}" class="lightbox-gallery-3 mfp-image"><img
-                                src="{{ $product->product_picture_url }}" alt="" /></a>
-
-                    </div> --}}
                 </div>
 
                 <div class="col-sm-12 col-md-8 mb-xs-20">
                     <h3 class="mt-0">{{ $product->name }} </h3>
-                    @if ($product->productsQuantity() != null)
+                    {{-- @if ($product->productsQuantity() != null)
                         <div class="intro-label">
                             <span class="badge badge-primary bg-green">In Stock</span>
                         </div>
@@ -53,7 +45,7 @@
                         <div class="intro-label">
                             <span class="badge badge-danger bg-red">NOT AVAILABLE</span>
                         </div>
-                    @endif
+                    @endif --}}
 
                     <p class="mt-0">
                         {{ $product->description }}
@@ -80,26 +72,16 @@
                             {{-- <form method="post" action="{{ route('customer-products.store') }}" class="form"> --}}
                             @csrf
                             <div class="custom-checkbox-cover mb-20">
-                                <div class="custom-checkbox">
-                                    <label>
-                                        <input type="radio" value="1" />
-                                        <span>XL</span>
-                                    </label>
-                                </div>
-
-                                <div class="custom-checkbox">
-                                    <label>
-                                        <input type="radio" value="1" />
-                                        <span>L</span>
-                                    </label>
-                                </div>
-
-                                <div class="custom-checkbox">
-                                    <label>
-                                        <input type="radio" value="1" />
-                                        <span>M</span>
-                                    </label>
-                                </div>
+                                @forelse ($product->product_sizes as $size)
+                                    <div class="custom-checkbox">
+                                        <label>
+                                            <input type="radio" name="product_size" value="{{ $size->id }}"
+                                                @if ($size->product_quantity() == null) disabled @endif />
+                                            <span>{{ $size->size }}</span>
+                                        </label>
+                                    </div>
+                                @empty
+                                @endforelse
                             </div>
                             <input name="quantity" id="quantity" type="number" class="input-lg round" min="1"
                                 max="5" value="1" />
@@ -126,8 +108,8 @@
         </div>
     </section>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -187,7 +169,7 @@
             });
 
             $('.slider-nav').slick({
-                slidesToShow: 3,
+                slidesToShow: 5,
                 slidesToScroll: 1,
                 asNavFor: '.slider-for',
                 dots: true,

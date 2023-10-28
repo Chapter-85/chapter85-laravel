@@ -8,7 +8,7 @@
                     <div class="d-flex align-items-center">
                         <h5 class="card-title flex-grow-1 mb-0">Order #{{ $order->id }}</h5>
                         <div class="flex-shrink-0">
-                            <span class="badge bg-success p-2" style="font-size: 15px">Total Price: PKR
+                            <span class="badge bg-success p-2" style="font-size: 15px">Total Price: Rs
                                 {{ number_format($total_price, 2) }}</span>
                             <span class="badge bg-info p-2" style="font-size: 15px">Order Status:
                                 {{ $order->order_status }}</span>
@@ -47,11 +47,11 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="fw-medium text-center">PKR {{ number_format($product->spot_price, 2) }}
+                                        <td class="fw-medium text-center">Rs {{ number_format($product->spot_price, 2) }}
                                         </td>
                                         <td class="fw-medium text-center">{{ $product->quantity }}</td>
                                         <td class="fw-medium text-center">
-                                            PKR {{ number_format($product->total_price, 2) }}
+                                            Rs {{ number_format($product->total_price, 2) }}
                                         </td>
                                     </tr>
                                 @endforeach

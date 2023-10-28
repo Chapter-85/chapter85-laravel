@@ -55,11 +55,11 @@
                                                     </td>
                                                     <td>
                                                         <span class="spot_price_usd">
-                                                            PKR {{ number_format($cart->spot_price) }}
+                                                            Rs {{ number_format($cart->spot_price) }}
                                                         </span>
                                                     </td>
                                                     <td>
-                                                        <span class="price_usd"> PKR
+                                                        <span class="price_usd"> Rs
                                                             {{ number_format($cart->total_price) }}
                                                         </span>
                                                     </td>
@@ -180,7 +180,7 @@
                                         <div class="col-md-12 pt-4 text-center">
                                             <div class="lead mt-0 mb-10">
                                                 Order Total:
-                                                <span id="total_price_usd"><strong>PKR
+                                                <span id="total_price_usd"><strong>Rs
                                                         {{ number_format($total_price) }}</strong></span>
                                             </div>
                                         </div>
