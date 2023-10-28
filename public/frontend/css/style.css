@@ -9521,60 +9521,18 @@ footer.bg-gray-lighter {
     content: none;
     /* Remove connectors for the first and last steps */
 }
-<<<<<<< HEAD
+
 .full-width{
     width: 100%;
     max-width: 380px;
 }
-  .custom-checkbox-cover {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        align-items: center;
-      }
 
-      .custom-checkbox label {
-        position: relative;
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-      }
-      .custom-checkbox label span {
-        text-align: center;
-        padding: 3px 0;
-        width: 40px;
-        height: 40px;
-        background-color: #add8e6;
-        color: rgb(0, 54, 124);
-        border: 1px solid transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 5px;
-      }
-
-      .custom-checkbox label input {
-        position: absolute;
-        color: #fff !important;
-        opacity: 0;
-        visibility: hidden;
-        width: 100%;
-        height: 100%;
-      }
-
-      .custom-checkbox input:checked + span {
-        border-color: #000;
-      }
-@media screen and (min-width:320px) and (max-width:399px) {
-
-=======
 
 .custom-checkbox-cover {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     align-items: center;
->>>>>>> 8d161e2 (changes)
 }
 
 .custom-checkbox label {

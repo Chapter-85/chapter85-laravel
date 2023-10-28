@@ -21,7 +21,6 @@
 
                 <div class="col-md-6 mb-md-30">
                     <div class="slider-for">
-<<<<<<< HEAD
                         @forelse ($product->product_images as $image)
                             <div><img src="{{ $image->product_picture_url }}" alt="Image 1"></div>
                         @empty
@@ -60,25 +59,6 @@
                         </div>
                     </div>
                     @if ($product->productsQuantity() != null)
-=======
-                        @foreach ($product->product_images as $images)
-                            <div><img src="{{ $images->product_picture_url }}" alt="Image 1"></div>
-                        @endforeach
-                        {{-- <div><img src="{{ $product->product_images[1]->product_picture_url }}" alt="Image 2"></div> --}}
-                        <!-- ... Add more main images as needed ... -->
-
-                    </div>
-                    <div class="slider-nav">
-                        @foreach ($product->product_images as $images)
-                            <div><img src="{{ $images->product_picture_url }}" alt="Image 1"></div>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="col-sm-12 col-md-8 mb-xs-20">
-                    <h3 class="mt-0">{{ $product->name }} </h3>
-                    {{-- @if ($product->productsQuantity() != null)
->>>>>>> 8d161e2 (changes)
                         <div class="intro-label">
                             <span class="badge badge-primary bg-green">In Stock</span>
                         </div>
@@ -86,7 +66,7 @@
                         <div class="intro-label">
                             <span class="badge badge-danger bg-red">NOT AVAILABLE</span>
                         </div>
-                    @endif --}}
+                    @endif
 
                     <div class="mb-30 mt-20 btns">
                         <hr class="mt-0 mb-30" />
