@@ -8,33 +8,16 @@
                     class="fa fa-angle-right"></i></a>
 
         </h2>
-        <div class="slider">
-            <div id="carousel">
-                <figure id="spinner">
-                    <figure>
-                        <img src="{{ asset('frontend/images/productImages/5-removebg-preview.png') }}" alt="">
-
-                    </figure>
-                    <figure>
-                        <img src="{{ asset('frontend/images/productImages/4-removebg-preview.png') }}" alt="">
-
-                    </figure>
-                    <figure>
-                        <img src="{{ asset('frontend/images/productImages/6-removebg-preview.png') }}" alt="">
-
-                    </figure>
-                    <figure>
-                        <img src="{{ asset('frontend/images/productImages/7-removebg-preview.png') }}" alt="">
-
-                    </figure>
-                    <figure>
-                        <img src="{{ asset('frontend/images/productImages/8-removebg-preview.png') }}" alt="">
-
-                    </figure>
-
-            </div>
-            <span class="ss-icon left" onclick="galleryspin('-')">&lt;</span>
-            <span class="ss-icon right" onclick="galleryspin('')">&gt;</span>
+        <div class="product-slider">
+            @foreach ($slider_products as $product)
+                <div class="product-item" onclick="location.href='{{ route('single-product', $product->id) }}';"
+                    style="cursor: pointer;">
+                    <img src="{{ $product->product_images[0]->product_picture_url }}" alt="{{ $product->name }}">
+                    <h4>{{ $product->name }}</h4>
+                    {{-- <p>{{ $product->description }}</p> --}}
+                    <p>Price: {{ $product->getProductPrice() }}</p>
+                </div>
+            @endforeach
         </div>
         {{-- <div class="row multi-columns-row">
 

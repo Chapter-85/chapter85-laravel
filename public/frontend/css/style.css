@@ -9572,4 +9572,43 @@ footer.bg-gray-lighter {
     max-width: 200px;
 }
 
+.product-slider {
+    margin: 20px;
+}
+
+.product-item {
+    max-width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 8px #aaa;
+    transition: transform .2s;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product-item:hover {
+    transform: scale(1.05);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #333;  /* or any other color of your choice */
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #555;  /* slightly lighter shade for hover effect */
+}
 @media screen and (min-width:320px) and (max-width:399px) {}

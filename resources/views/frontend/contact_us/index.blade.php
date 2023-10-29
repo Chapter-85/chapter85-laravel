@@ -9,7 +9,7 @@
 
             <div class="section-text mb-60 mb-sm-40 contact-us ">
                 <div class="row mt-40">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-12">
 
                         <div class="contact-form row ">
                             <div class="col-12 col-md-6">
@@ -42,14 +42,13 @@
                         </div>
 
                     </div>
-                    <div class="col-12 col-md-1"></div>
-                    <div class="col-12 col-md-5">
+                    {{-- <div class="col-12 col-md-5">
                         <div class="google-map">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14767.075238273756!2d114.1376148!3d22.2867458!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404007cb92c5e2b%3A0xdd9c69eed655455!2sMG%20Group!5e0!3m2!1sen!2s!4v1662377564190!5m2!1sen!2s"
                                 width="100%" height="300px" frameborder="0" style="border:0" allowfullscreen></iframe>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
