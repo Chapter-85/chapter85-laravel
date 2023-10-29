@@ -8,32 +8,47 @@
 
         <div class="section-text">
             <div class="row">
-                <div class="col-md-4 col-12 mt-2">
-                    <div class="card">
-                        <img src="{{ asset('frontend/images/productImages/1.JPG') }}" class="image" alt="">
-                        <div class="middle">
-                            <p>Some Product Info</p>
+                @forelse ($categories as $category)
+                    <div class="col-md-4 col-12 mt-2">
+                        <div class="card">
+                            <img src="{{ asset('frontend/images/productImages/1.JPG') }}" class="image" alt="">
+                            <div class="middle">
+                                <a href="{{ route('shop', ['category' => $category->id]) }}" class="btn"> See
+                                    Products</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-12 mt-2">
-                    <div class="card">
-                        <img src="{{ asset('frontend/images/productImages/2.JPG') }}" class="image" alt="">
-                        <div class="middle">
-                            <p>Some Product Info</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4 col-12 mt-2">
-                    <div class="card">
-                        <img src="{{ asset('frontend/images/productImages/3.JPG') }}" class="image" alt="">
-                        <div class="middle">
-                            <p>Some Product Info</p>
-                            {{-- <div class="text">John</div> --}}
+                @empty
+
+                    <div class="col-md-4 col-12 mt-2">
+                        <div class="card">
+                            <img src="{{ asset('frontend/images/productImages/1.JPG') }}" class="image" alt="">
+                            <div class="middle">
+                                <a href="{{ route('shop', ['category' => $category->id]) }}"></a>
+                                <p>Some Product Info</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-md-4 col-12 mt-2">
+                        <div class="card">
+                            <img src="{{ asset('frontend/images/productImages/2.JPG') }}" class="image" alt="">
+                            <div class="middle">
+                                <p>Some Product Info</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12 mt-2">
+                        <div class="card">
+                            <img src="{{ asset('frontend/images/productImages/3.JPG') }}" class="image" alt="">
+                            <div class="middle">
+                                <p>Some Product Info</p>
+                                {{-- <div class="text">John</div> --}}
+                            </div>
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

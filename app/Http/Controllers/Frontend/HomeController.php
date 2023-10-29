@@ -33,6 +33,7 @@ class HomeController extends Controller
     {
         $_products = Product::with('category');
         $products = $_products->limit(3)->latest()->get();
+        $categories = Catergory::limit(3)->latest()->get();
         $cart_count = 0;
         if (!isset(\Auth::user()->id)) {
             $cart_count = ShopCart::where(['session_id' => $request->cookie('laravel_session'), 'status' => 'pending'])->count();;
@@ -41,6 +42,7 @@ class HomeController extends Controller
         return view('frontend.home.index', [
             'products' => $products,
             'cart_count' => $cart_count,
+            'categories' => $categories,
             'slider_products' => $_products->get(),
         ]);
     }
