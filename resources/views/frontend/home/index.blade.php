@@ -63,7 +63,7 @@
                                     {{ __('home_page.Email') }}
                                 </div>
                                 <div class="ci-text">
-                                    <a href="mailto:account@mgmetals.com.hk">account@mgmetals.com.hk</a>
+                                    <a href="mailto:chapter85.pk@hotmail.com">chapter85.pk@hotmail.com</a>
                                 </div>
                             </div>
                         </div>
