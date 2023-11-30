@@ -2,13 +2,13 @@
     <div class="container">
 
         <div class="footer-social-links ">
-            <a href="{{ route('home') }}" title="Facebook" target="_blank"><i class="fa fa-facebook"></i> <span
-                    class="sr-only">Facebook profile</span></a>
-            <a href="{{ route('home') }}" title="Twitter" target="_blank"><i class="fa fa-twitter"></i> <span
-                    class="sr-only">Twitter profile</span></a>
+            <a href="https://www.facebook.com/people/Chapter85/61552460931365/" title="Facebook" target="_blank"><i
+                    class="fa fa-facebook"></i> <span class="sr-only">Facebook profile</span></a>
+            <a href="https://www.instagram.com/chapter.85.pk/" title="Instagram" target="_blank"><i
+                    class="fa fa-instagram"></i> <span class="sr-only">Instagram profile</span></a>
             {{-- <a href="{{ route('home') }}" title="Behance" target="_blank"><i class="fa fa-behance"></i> <span class="sr-only">Behance profile</span></a> --}}
-            <a href="{{ route('home') }}" title="LinkedIn+" target="_blank"><i class="fa fa-linkedin"></i> <span
-                    class="sr-only">LinkedIn+ profile</span></a>
+            {{-- <a href="{{ route('home') }}" title="LinkedIn+" target="_blank"><i class="fa fa-linkedin"></i> <span
+                    class="sr-only">LinkedIn+ profile</span></a> --}}
             {{-- <a href="#" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i> <span class="sr-only">Pinterest profile</span></a> --}}
         </div>
         <div class="footer-text mt-20">
