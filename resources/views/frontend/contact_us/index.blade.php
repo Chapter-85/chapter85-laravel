@@ -12,33 +12,37 @@
                     <div class="col-12 col-md-12">
 
                         <div class="contact-form row ">
-                            <div class="col-12 col-md-6">
-                                <div class="form-group">
-                                    <label>{{ __('home_page.first_name') }}</label>
-                                    <input class="form-control" type="text">
+                            <form method="POST" action="{{ route('contact.store') }}">
+                                @csrf
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>{{ __('home_page.first_name') }}</label>
+                                        <input name="fname" class="form-control" type="text">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="form-group">
-                                    <label>{{ __('home_page.last_name') }}</label>
-                                    <input class="form-control" type="text">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>{{ __('home_page.last_name') }}</label>
+                                        <input name="lname" class="form-control" type="text">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-12">
-                                <div class="form-group">
-                                    <label>{{ __('home_page.email') }} <span>*</span></label>
-                                    <input class="form-control" type="email">
+                                <div class="col-12 col-md-12">
+                                    <div class="form-group">
+                                        <label>{{ __('home_page.email') }} <span>*</span></label>
+                                        <input name="email" class="form-control" type="email">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-12">
-                                <div class="form-group">
-                                    <label>{{ __('home_page.message') }}</label>
-                                    <textarea class="form-control" type="text"></textarea>
+                                <div class="col-12 col-md-12">
+                                    <div class="form-group">
+                                        <label>{{ __('home_page.message') }}</label>
+                                        <textarea name="message" class="form-control" type="text"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-12">
-                                <button class="btn btn-mod btn-w btn-medium">{{ __('home_page.send') }}</button>
-                            </div>
+                                <div class="col-12 col-md-12">
+                                    <button type="submit"
+                                        class="btn btn-mod btn-w btn-medium">{{ __('home_page.send') }}</button>
+                                </div>
+                            </form>
                         </div>
 
                     </div>

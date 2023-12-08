@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\CatergoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CustomerProductController;
 use App\Http\Controllers\CustomerShareholder;
@@ -75,7 +76,7 @@ Route::resources(['customer-products' => CustomerProductController::class]);
 Route::get('/order-delivery-details', [OrderController::class, 'order_delivery_details'])->name('order-delivery-details');
 Route::resources(['walk-in-customer' => WalkInCustomerController::class]);
 Route::resources(['orders' => OrderController::class]);
-
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::resources(['/customers' => CustomerController::class]);
