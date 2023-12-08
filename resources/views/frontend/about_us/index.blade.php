@@ -39,19 +39,19 @@
                     </div>
                     <div class="col-sm-12 pr-md-5">
                         <div class="d-flex">
-                            <img src="{{ asset('frontend/images/milestone.png') }}" style="height: 26px;margin-right: 15px;"
+                            <img src="{{ asset('frontend/images/milestone.PNG') }}" style="height: 26px;margin-right: 15px;"
                                 alt="logo">
                             <p style="color:#254345">Our extensive range of leather products, including shoes, wallets, and
                                 belts, are a testament to our unwavering commitment to quality and style.</p>
                         </div>
                         <div class="d-flex">
-                            <img src="{{ asset('frontend/images/milestone.png') }}" style="height: 26px;margin-right: 15px;"
+                            <img src="{{ asset('frontend/images/milestone.PNG') }}" style="height: 26px;margin-right: 15px;"
                                 alt="logo">
                             <p style="color:#254345">We meticulously select the finest leathers and materials to ensure that
                                 every piece we create is a work of art</p>
                         </div>
                         <div class="d-flex">
-                            <img src="{{ asset('frontend/images/milestone.png') }}" style="height: 26px;margin-right: 15px;"
+                            <img src="{{ asset('frontend/images/milestone.PNG') }}" style="height: 26px;margin-right: 15px;"
                                 alt="logo">
                             <p style="color:#254345">Each product embodies the essence of sophistication and showcases the
                                 uniqueness of genuine leather.
