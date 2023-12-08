@@ -11,9 +11,9 @@
                 <div class="row mt-40">
                     <div class="col-12 col-md-12">
 
-                        <div class="contact-form row ">
-                            <form method="POST" action="{{ route('contact.store') }}">
-                                @csrf
+                        <form method="POST" action="{{ route('contact.store') }}">
+                            @csrf
+                            <div class="contact-form row ">
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label>{{ __('home_page.first_name') }}</label>
@@ -42,8 +42,8 @@
                                     <button type="submit"
                                         class="btn btn-mod btn-w btn-medium">{{ __('home_page.send') }}</button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
 
                     </div>
                     {{-- <div class="col-12 col-md-5">
