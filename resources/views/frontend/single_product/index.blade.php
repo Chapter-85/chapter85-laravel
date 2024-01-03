@@ -77,7 +77,7 @@
                                 @forelse ($product->product_sizes as $size)
                                     <div class="custom-checkbox">
                                         <label>
-                                            <input type="radio" name="product_size" value="{{ $size->id }}"
+                                            <input type="radio" name="product_size_id" value="{{ $size->id }}"
                                                 @if ($size->product_quantity() == null) disabled @endif />
                                             <span>{{ $size->size }}</span>
                                         </label>

@@ -15,6 +15,7 @@ class ShopCart extends Model
         'user_id',
         'session_id',
         'product_id',
+        'product_size_id',
         'spot_price',
         'total_price',
         'status',
