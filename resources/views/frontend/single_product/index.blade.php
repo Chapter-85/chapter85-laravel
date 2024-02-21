@@ -103,7 +103,7 @@
                         </form>
                     </div>
                     <p class="mt-0">
-                        {{ $product->description }}
+                        {!! $product->description !!}
                     </p>
 
                     <hr class="mt-0 mb-30" />

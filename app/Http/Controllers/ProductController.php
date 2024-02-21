@@ -6,6 +6,7 @@ use App\Models\Catergory;
 use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Models\ProductPictures;
+use App\Models\ProductSizes;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DataTables;
@@ -111,6 +112,14 @@ class ProductController extends Controller
                     'image' => $file_name
                 ]);
                 // $product->product_images()->create(['image' => $file_name]);
+            }
+        }
+        if ($request->has('min_p_size') && $request->has("min_p_size")) {
+            for ($i = $request->min_p_size; $i <= $request->max_p_size; $i++) {
+                ProductSizes::create([
+                    'product_id' => $product->id,
+                    'size' => $i,
+                ]);
             }
         }
 
