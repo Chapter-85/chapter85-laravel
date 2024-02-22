@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@push('header_scripts')
+    <link href="{{ asset('theme/dist/default/assets/libs/quill/quill.core.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('theme/dist/default/assets/libs/quill/quill.snow.css') }}" rel="stylesheet" type="text/css" />
+@endpush
+
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -97,7 +102,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-label-group in-border">
                                 <label for="fixed_amount" class="form-label">Fixed Amount</label>
                                 <div class="input-group">
@@ -119,7 +124,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <div class="form-label-group in-border">
                                 <label for="status" class="form-label">Status</label>
                                 <select id="" class="form-select form-control mb-3" name="status">
@@ -145,18 +150,35 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-12 mb-3">
+                        <div class="col-md-6 col-sm-12 mb-3">
                             <div class="form-label-group in-border">
-                                <label for="on_hold" class="form-label">Minimum in Stock </label>
-                                <input type="text"
-                                    class="form-control @if ($errors->has('on_hold')) is-invalid @endif"
-                                    id="on_hold" name="on_hold" placeholder="Enter Minimum in Stock"
-                                    value="{{ $product->on_hold }}">
+                                <label for="min_p_size" class="form-label">Minimum Product Size </label>
+                                <input type="number"
+                                    class="form-control @if ($errors->has('min_p_size')) is-invalid @endif"
+                                    id="min_p_size" name="min_p_size" placeholder="Enter Minimum Product Size"
+                                    value="{{ $product->min_p_size }}">
                                 <div class="invalid-tooltip">
-                                    @if ($errors->has('on_hold'))
-                                        {{ $errors->first('on_hold') }}
+                                    @if ($errors->has('min_p_size'))
+                                        {{ $errors->first('min_p_size') }}
                                     @else
-                                        Minimum in Stock is required!
+                                        Minimum Product Size is required!
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12 mb-3">
+                            <div class="form-label-group in-border">
+                                <label for="max_p_size" class="form-label">Maximum Product size </label>
+                                <input type="number"
+                                    class="form-control @if ($errors->has('max_p_size')) is-invalid @endif"
+                                    id="max_p_size" name="max_p_size" placeholder="Enter Maximum Product size"
+                                    value="{{ $product->max_p_size }}">
+                                <div class="invalid-tooltip">
+                                    @if ($errors->has('max_p_size'))
+                                        {{ $errors->first('max_p_size') }}
+                                    @else
+                                        Maximum Product size is required!
                                     @endif
                                 </div>
                             </div>
@@ -214,12 +236,15 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 col-sm-12">
-                            <div class="form-label-group in-border">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control mb-3" name="description" id="description"
-                                    placeholder="Enter product description here...">{{ $product->description }}</textarea>
-                            </div>
+                        <div class="col-md-12 col-sm-12 mb-3">
+                            <div id="snow-editor" style="height: 300px;">{!! $product->description !!}</div>
+                            <input type="hidden" name="description" id="description">
+                            {{-- <div class="form-label-group in-border">
+                                    <label for="description" class="form-label">Description (Simplified
+                                        Chinese)</label>
+                                    <textarea class="form-control mb-3" name="description_s_ch" id="description"
+                                        placeholder="Enter product description here...">{{ old('description_s_ch') }}</textarea>
+                                </div> --}}
                         </div>
 
                         <div class="col-12 text-end">
@@ -263,5 +288,6 @@
     </div>
 @endsection
 @push('footer_scripts')
-    <script></script>
+    <script src="{{ asset('theme/dist/default/assets/libs/quill/quill.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('modules/products.js') }}"></script>
 @endpush

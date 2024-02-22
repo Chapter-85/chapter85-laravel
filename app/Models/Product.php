@@ -40,6 +40,8 @@ class Product extends Model
         'session_duration',
         'markup_type',
         'on_hold',
+        'min_p_size',
+        'max_p_size',
         'tier_commission_1',
         'tier_commission_2',
         'tier_commission_3',
