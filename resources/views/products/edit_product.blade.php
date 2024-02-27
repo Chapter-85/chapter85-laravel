@@ -102,7 +102,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-label-group in-border">
                                 <label for="fixed_amount" class="form-label">Fixed Amount</label>
                                 <div class="input-group">
@@ -124,7 +124,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-label-group in-border">
                                 <label for="status" class="form-label">Status</label>
                                 <select id="" class="form-select form-control mb-3" name="status">
@@ -150,6 +150,26 @@
                             </div>
                         </div>
 
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-label-group in-border">
+                                <label for="show_size_chart" class="form-label">Show Size Chart</label>
+                                <select id="" class="form-select form-control mb-3" name="show_size_chart">
+                                    <option value=1 @if ($product->show_size_chart == 1) {{ 'selected' }} @endif>
+                                        Yes
+                                    </option>
+                                    <option value=0 @if ($product->show_size_chart == 0) {{ 'selected' }} @endif>
+                                        No
+                                    </option>
+                                </select>
+                                <div class="invalid-tooltip">
+                                    @if ($errors->has('show_size_chart'))
+                                        {{ $errors->first('show_size_chart') }}
+                                    @else
+                                        Show Size Chart is required!
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-6 col-sm-12 mb-3">
                             <div class="form-label-group in-border">
                                 <label for="min_p_size" class="form-label">Minimum Product Size </label>

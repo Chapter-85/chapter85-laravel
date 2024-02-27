@@ -42,6 +42,7 @@ class Product extends Model
         'on_hold',
         'min_p_size',
         'max_p_size',
+        'show_size_chart',
         'tier_commission_1',
         'tier_commission_2',
         'tier_commission_3',

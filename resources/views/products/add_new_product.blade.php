@@ -100,7 +100,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-label-group in-border">
                                 <label for="fixed_amount" class="form-label">Fixed Amount</label>
                                 <div class="input-group">
@@ -122,8 +122,7 @@
                             </div>
                         </div>
 
-
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-label-group in-border">
                                 <label for="status" class="form-label">Status</label>
                                 <select id="" class="form-select form-control mb-3" name="status">
@@ -148,13 +147,39 @@
                             </div>
                         </div>
 
+                        <div class="col-md-4 col-sm-12">
+                            <div class="form-label-group in-border">
+                                <label for="show_size_chart" class="form-label">Show Size Chart</label>
+                                <select id="" class="form-select form-control mb-3" name="show_size_chart"
+                                    required>
+                                    {{-- <option value="" @if (old('show_size_chart') == '') {{ 'selected' }} @endif
+                                        selected disabled>
+                                        Select One
+                                    </option> --}}
+                                    <option value=1 @if (old('show_size_chart') == 1) {{ 'selected' }} @endif>
+                                        Yes
+                                    </option>
+                                    <option value=0 @if (old('show_size_chart') == 0) {{ 'selected' }} @endif>
+                                        No
+                                    </option>
+                                </select>
+                                <div class="invalid-tooltip">
+                                    @if ($errors->has('show_size_chart'))
+                                        {{ $errors->first('show_size_chart') }}
+                                    @else
+                                        Show Size Chart is required!
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md-6 col-sm-12 mb-3">
                             <div class="form-label-group in-border">
                                 <label for="min_p_size" class="form-label">Minimum Product Size</label>
                                 <input type="number"
                                     class="form-control @if ($errors->has('min_p_size')) is-invalid @endif"
                                     id="min_p_size" name="min_p_size" placeholder="Enter Minimum Product Size"
-                                    value="{{ old('min_p_size') }}">
+                                    value="{{ old('min_p_size') }}" disabled>
                                 <div class="invalid-tooltip">
                                     @if ($errors->has('min_p_size'))
                                         {{ $errors->first('min_p_size') }}
@@ -171,7 +196,7 @@
                                 <input type="number"
                                     class="form-control @if ($errors->has('max_p_size')) is-invalid @endif"
                                     id="max_p_size" name="max_p_size" placeholder="Enter Maximum Product size"
-                                    value="{{ old('max_p_size') }}">
+                                    value="{{ old('max_p_size') }}" disabled>
                                 <div class="invalid-tooltip">
                                     @if ($errors->has('max_p_size'))
                                         {{ $errors->first('max_p_size') }}
@@ -217,7 +242,7 @@
                             <div class="form-label-group in-border">
                                 <label for="product_picture" class="form-label">Product Picture </label>
                                 <input type="file"
-                                    class="form-control @if ($errors->has('product_picture')) is-invalid @endif"
+                                    class="form-control-file @if ($errors->has('product_picture')) is-invalid @endif"
                                     id="product_picture" name="product_picture[]" placeholder="Please Enter Account Name"
                                     value="{{ old('product_picture') }}" multiple="multiple" required>
                                 <div class="invalid-tooltip">

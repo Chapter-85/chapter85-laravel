@@ -105,19 +105,148 @@
                     <p class="mt-0">
                         {!! $product->description !!}
                     </p>
-
+                    @if ($product->show_size_chart == 1)
+                        <p>&nbsp;<img
+                                src="https://shopstar-images.s3.amazonaws.com/uploads/ckeditor/pictures/20938/content_Length_large.png"
+                                style="display: block; margin-left: auto; margin-right: auto;"></p>
+                        <table style="table-layout: fixed" style="border-collapse: collapse">
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2" width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;"><strong>US/PAK Size</strong></span></p>
+                                    </td>
+                                    <td rowspan="2" width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;"><strong>US/PAK Size</strong></span></p>
+                                    </td>
+                                    {{-- <td rowspan="2" width="208" style="text-align: center;">
+                                            <p><span style="color: #000000;"><strong>US/PAK Size</strong></span></p>
+                                        </td> --}}
+                                    {{-- <td width="208" style="text-align: center;"></td> --}}
+                                    <td colspan="4" width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;"><strong>Foot Length</strong></span></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    {{-- <td width="208" style="text-align: center;">
+                                            <p><strong><span style="color: #000000;">US/PAK Size</span></strong></p>
+                                        </td>
+                                        <td width="208" style="text-align: center;">
+                                            <p><strong><span style="color: #000000;">Euro Size</span></strong></p>
+                                        </td> --}}
+                                    <td width="208" style="text-align: center;">
+                                        <p><strong><span style="color: #000000;">cm</span></strong></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><strong><span style="color: #000000;">Inch</span></strong></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">6</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">39</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">23.7</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">9.33</span></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">7</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">40</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">24.6</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">9.67</span></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">8</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">41</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">25.4</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">10.00</span></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">9</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">42</td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">26.2</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">10.31</span></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">10</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">43</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">27.1</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">10.67</span></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">11</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">44</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">27.9</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">10.98</span></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">12</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">45</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">28.8</span></p>
+                                    </td>
+                                    <td width="208" style="text-align: center;">
+                                        <p><span style="color: #000000;">11.34</span></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    @endif
                     <hr class="mt-0 mb-30" />
-
-
-
-
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
